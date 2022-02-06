@@ -42,6 +42,7 @@ import { SharedModule } from './shared/shared.module';
 import { FunctionProxyInterceptor } from './services/function-proxy.interceptor';
 import { ConfirmationModule } from './shared/confirmation/confirmation.module';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { JobsComponent } from './jobs/jobs.component';
 
 
 
@@ -80,6 +81,7 @@ if (!environment.production) {
     SidenavComponent,
     AuthErrorComponent,
     UserSettingsComponent,
+    JobsComponent,
   ],
   imports: [
     SharedModule,

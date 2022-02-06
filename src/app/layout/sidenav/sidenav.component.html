@@ -3,6 +3,24 @@
     <mat-expansion-panel class="transparent" [expanded]="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
+          Jobs
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="5px">
+        <button (click)="closeSidenavIfMobile()" class="w-100" mat-flat-button routerLink="/jobs"
+          routerLinkActive="bg-primary text-accent">
+          <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="start center">
+            <mat-icon>work</mat-icon>
+            <span>Jobs</span>
+          </div>
+        </button>
+
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="transparent" [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
           Settings
         </mat-panel-title>
       </mat-expansion-panel-header>

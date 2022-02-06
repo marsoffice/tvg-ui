@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MsalGuard } from '@azure/msal-angular';
 import { AuthErrorComponent } from './auth-error/auth-error.component';
 import { HomeComponent } from './home/home.component';
+import { JobsComponent } from './jobs/jobs.component';
 import { LoggedOutComponent } from './logged-out/logged-out.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
@@ -24,6 +25,11 @@ const routes: Routes = [
   {
     path: 'user-settings',
     component: UserSettingsComponent,
+    canActivate: [MsalGuard],
+  },
+  {
+    path: 'jobs',
+    component: JobsComponent,
     canActivate: [MsalGuard],
   },
   {
