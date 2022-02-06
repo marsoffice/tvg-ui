@@ -6,8 +6,6 @@ export interface NotificationDto {
   message: string;
   title: string;
   absoluteRouteUrl?: string;
-  isRead: boolean;
   severity: Severity;
   createdDate: string;
-  readDate?: string;
 }
