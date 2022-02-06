@@ -1,0 +1,33 @@
+export interface Job {
+  id?: string;
+  userId?: string;
+  name: string;
+  preferredDurationInSeconds?: number;
+  disabled?: boolean;
+  cron: string;
+  contentType?: string;
+  contentTopic?: string;
+  contentStartDate?: string;
+  contentMinChars?: number;
+  contentMaxChars?: number;
+  contentIncludeLinks?: boolean;
+  contentMinPosts?: number;
+  contentMaxPosts?: number;
+  speechPitch?: number;
+  speechSpeed?: number;
+  speechLanguage?: string;
+  speechType?: string;
+  speechPauseBeforeInMillis?: number;
+  speechPauseAfterInMillis?: number;
+  audioBackgroundQuality?: number;
+  audioBackgroundVolumeInPercent?: number;
+  videoBackgroundResolution?: string;
+  textFontFamily?: string;
+  textFontSize?: number;
+  textBoxColor?: string;
+  textBoxOpacity?: number;
+  texBoxBorderColor?: string;
+  disableAutoUpload?: boolean;
+  postDescription?: string;
+  editorVideoResolution?: string;
+}
