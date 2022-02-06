@@ -1,0 +1,21 @@
+:host {
+  mat-toolbar {
+    padding: 0;
+    height: 50px;
+    #logo {
+      cursor: pointer;
+      height: 100%;
+      object-fit: cover;
+      object-position: top left;
+    }
+
+    #avatar {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      display: block;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+  }
+}

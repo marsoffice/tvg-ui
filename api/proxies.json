@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json.schemastore.org/proxies",
+  "proxies": {
+    "users": {
+      "debug": false,
+      "matchCondition": {
+        "route": "/api/users/{*restOfPath}"
+      },
+      "backendUri": "%users_url%/api/users/{restOfPath}",
+      "requestOverrides": {
+        "backend.request.headers.Authorization": "{request.headers.x-authorization}"
+      }
+    },
+    "speech": {
+      "debug": false,
+      "matchCondition": {
+        "route": "/api/speech/{*restOfPath}"
+      },
+      "backendUri": "%speech_url%/api/speech/{restOfPath}",
+      "requestOverrides": {
+        "backend.request.headers.Authorization": "{request.headers.x-authorization}"
+      }
+    },
+    "videos": {
+      "debug": false,
+      "matchCondition": {
+        "route": "/api/videos/{*restOfPath}"
+      },
+      "backendUri": "%videos_url%/api/videos/{restOfPath}",
+      "requestOverrides": {
+        "backend.request.headers.Authorization": "{request.headers.x-authorization}"
+      }
+    },
+    "jobs": {
+      "debug": false,
+      "matchCondition": {
+        "route": "/api/jobs/{*restOfPath}"
+      },
+      "backendUri": "%jobs_url%/api/jobs/{restOfPath}",
+      "requestOverrides": {
+        "backend.request.headers.Authorization": "{request.headers.x-authorization}"
+      }
+    },
+    "content": {
+      "debug": false,
+      "matchCondition": {
+        "route": "/api/content/{*restOfPath}"
+      },
+      "backendUri": "%content_url%/api/content/{restOfPath}",
+      "requestOverrides": {
+        "backend.request.headers.Authorization": "{request.headers.x-authorization}"
+      }
+    },
+    "notifications": {
+      "debug": false,
+      "matchCondition": {
+        "route": "/api/notifications/{*restOfPath}"
+      },
+      "backendUri": "%notifications_url%/api/notifications/{restOfPath}",
+      "requestOverrides": {
+        "backend.request.headers.Authorization": "{request.headers.x-authorization}"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <button *ngIf="isMobile && user != null" mat-icon-button (click)="toggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <img id="logo" routerLink="/" src="/assets/images/logo.svg" [style]="{width: isMobile ? '54px' : null}" />
+  <button routerLink="/" routerLinkActive="bg-primary text-accent" [routerLinkActiveOptions]="{exact: true}" mat-button class="h-100 brd-0">
+    <mat-icon>home</mat-icon>
+    <span>Home</span>
+  </button>
+  <span fxFlex></span>
+  <img id="avatar" *ngIf="user != null && photo != null" [src]="photo" [matMenuTriggerFor]="userMenu"/>
+  <button *ngIf="user == null || photo == null" [matMenuTriggerFor]="userMenu" mat-icon-button>
+    <mat-icon *ngIf="user == null">more_vert</mat-icon>
+    <mat-icon *ngIf="user != null && photo == null">account_circle</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-menu #userMenu="matMenu">
+  <button mat-menu-item *ngIf="user"><mat-icon>person</mat-icon>{{user.name}}</button>
+
+  <button routerLink="/" *ngIf="!user" mat-menu-item><mat-icon>login</mat-icon>Login</button>
+  <button *ngIf="user" mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon>Logout</button>
+</mat-menu>

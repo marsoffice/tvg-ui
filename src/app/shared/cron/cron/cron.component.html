@@ -1,0 +1,57 @@
+<div fxLayout="row wrap" fxLayoutGap="5px" fxLayoutAlign="flex-start center">
+  <div>At every</div>
+  <mat-form-field>
+    <mat-select (openedChange)="markAsTouched()" (selectionChange)="onRecurrenceTypeChange()" [disabled]="disabled"
+      [(value)]="selectedRecurrenceType">
+      <mat-option [value]="rt.value" *ngFor="let rt of recurrenceTypes">
+        {{rt.key}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="selectedRecurrenceType > allRecurrenceTypes.Month">
+    <mat-label>At month</mat-label>
+    <mat-select (openedChange)="markAsTouched()" (selectionChange)="onSelectionChange()" [disabled]="disabled" [(value)]="selectedMonth">
+      <mat-option [value]="m" *ngFor="let m of allMonths">
+        {{padValue(m)}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="selectedRecurrenceType > allRecurrenceTypes.Day && selectedRecurrenceType !== allRecurrenceTypes.Week">
+    <mat-label>At day</mat-label>
+    <mat-select (openedChange)="markAsTouched()" (selectionChange)="onSelectionChange()" [disabled]="disabled" [(value)]="selectedDay">
+      <mat-option [value]="d" *ngFor="let d of allDays">
+        {{padValue(d)}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="selectedRecurrenceType === allRecurrenceTypes.Week">
+    <mat-label>At weekday</mat-label>
+    <mat-select (openedChange)="markAsTouched()" (selectionChange)="onSelectionChange()" [disabled]="disabled" [(value)]="selectedWeekday">
+      <mat-option [value]="d" *ngFor="let d of allWeekdays">
+        {{d.toLowerCase()}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="selectedRecurrenceType > allRecurrenceTypes.Hour">
+    <mat-label>At hour</mat-label>
+    <mat-select (openedChange)="markAsTouched()" (selectionChange)="onSelectionChange()" [disabled]="disabled" [(value)]="selectedHour">
+      <mat-option [value]="h" *ngFor="let h of allHours">
+        {{padValue(h)}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="selectedRecurrenceType > allRecurrenceTypes.Minute">
+    <mat-label>At minute</mat-label>
+    <mat-select (openedChange)="markAsTouched()" (selectionChange)="onSelectionChange()" [disabled]="disabled" [(value)]="selectedMinute">
+      <mat-option [value]="m" *ngFor="let m of allMinutes">
+        {{padValue(m)}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>

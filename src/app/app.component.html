@@ -1,0 +1,13 @@
+<div fxFlexFill fxLayout="column">
+  <app-header [sidenav]="sidenav" [isMobile]="isMobile"></app-header>
+  <mat-drawer-container fxFlex="1 1 auto" autosize>
+    <mat-drawer [disableClose]="!isMobile" class="p-0 m-0" #sidenav [mode]="isMobile ? 'over' : 'side'"
+      [opened]="!isMobile && user != null">
+      <app-sidenav [sidenav]="sidenav" [user]="user" *ngIf="user"></app-sidenav>
+    </mat-drawer>
+    <div id="content">
+      <router-outlet *ngIf="!isIframe"></router-outlet>
+    </div>
+  </mat-drawer-container>
+  <app-footer></app-footer>
+</div>
