@@ -27,14 +27,11 @@ import { environment } from 'src/environments/environment';
 import { LoggedOutComponent } from './logged-out/logged-out.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavComponent } from './layout/sidenav/sidenav.component';
 import { AuthErrorComponent } from './auth-error/auth-error.component';
@@ -96,13 +93,10 @@ if (!environment.production) {
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
-    MatListModule,
     MatSlideToggleModule,
     MatSidenavModule,
-    MatCardModule,
     MatSnackBarModule,
     MatExpansionModule,
-    MatBadgeModule,
     ConfirmationModule,
 
 
