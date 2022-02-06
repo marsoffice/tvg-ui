@@ -9,6 +9,10 @@ module.exports = {
       to: "http://localhost:7001/api/users/$1",
     },
     {
+      from: "/api/editor/(.*)",
+      to: "http://localhost:7007/api/editor/$1",
+    },
+    {
       from: "/api/speech/(.*)",
       to: "http://localhost:7002/api/speech/$1",
     },

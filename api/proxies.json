@@ -51,6 +51,16 @@
         "backend.request.headers.Authorization": "{request.headers.x-authorization}"
       }
     },
+    "editor": {
+      "debug": false,
+      "matchCondition": {
+        "route": "/api/editor/{*restOfPath}"
+      },
+      "backendUri": "%editor_url%/api/editor/{restOfPath}",
+      "requestOverrides": {
+        "backend.request.headers.Authorization": "{request.headers.x-authorization}"
+      }
+    },
     "notifications": {
       "debug": false,
       "matchCondition": {

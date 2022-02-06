@@ -22,5 +22,9 @@ module.exports = {
   "/api/content": {
     target: "http://localhost:7006",
     secure: false,
-  }
+  },
+  "/api/editor": {
+    target: "http://localhost:7007",
+    secure: false,
+  },
 };
