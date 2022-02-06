@@ -31,7 +31,7 @@ export class ToastService {
   private show(message: string, title: string | null, className: string) {
     const sub = new Subject<void>();
     if (title == null) {
-      title = className;
+      title = className.split('-')[1].toUpperCase();
     }
     this.snackBar.openFromComponent(ToastComponent, {
       horizontalPosition: 'end',
