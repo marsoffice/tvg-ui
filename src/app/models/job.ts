@@ -13,6 +13,7 @@ export interface Job {
   contentIncludeLinks?: boolean;
   contentMinPosts?: number;
   contentMaxPosts?: number;
+  contentNoOfIncludedTopComments?: number;
   speechPitch?: number;
   speechSpeed?: number;
   speechLanguage?: string;
