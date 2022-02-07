@@ -32,6 +32,10 @@ module.exports = {
       from: "/api/content(.*)",
       to: "http://localhost:7006/api/content$1",
     },
+    {
+      from: "/api/translate(.*)",
+      to: "http://localhost:7011/api/translate$1",
+    },
   ],
   directory: "dist/tvg-ui",
   logFormat: "stats",

@@ -27,4 +27,8 @@ module.exports = {
     target: "http://localhost:7007",
     secure: false,
   },
+  "/api/translate": {
+    target: "http://localhost:7011",
+    secure: false,
+  }
 };

@@ -70,6 +70,16 @@
       "requestOverrides": {
         "backend.request.headers.Authorization": "{request.headers.x-authorization}"
       }
+    },
+    "translate": {
+      "debug": false,
+      "matchCondition": {
+        "route": "/api/translate/{*restOfPath}"
+      },
+      "backendUri": "%translate_url%/api/translate/{restOfPath}",
+      "requestOverrides": {
+        "backend.request.headers.Authorization": "{request.headers.x-authorization}"
+      }
     }
   }
 }
