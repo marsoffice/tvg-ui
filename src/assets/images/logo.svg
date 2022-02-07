@@ -1,14 +1,1 @@
-<svg width="119.82" height="44.93" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1">
-
- <g>
-  <title>Layer 1</title>
-  <rect id="svg_1" fill="#98c1d9" height="44.93" width="119.82" class="cls-1"/>
-  <rect id="svg_2" transform="rotate(90 22.09 3.23)" fill="#1d3461" height="3.28" width="7.16" y="14.34" x="28.03" class="cls-2"/>
-  <rect id="svg_3" transform="rotate(90 51.82 -26.5)" fill="#1d3461" height="3.71" width="7.16" y="-15.6" x="87.49" class="cls-2"/>
-  <rect id="svg_4" fill="#1d3461" height="3.96" width="33.22" y="9.1" x="7.7" class="cls-2"/>
-  <rect id="svg_5" transform="rotate(90 70.92 -7.39)" fill="#1d3461" height="3.71" width="7.16" y="22.61" x="106.59" class="cls-2"/>
-  <rect id="svg_6" transform="rotate(90 41.2 22.33)" fill="#1d3461" height="3.28" width="7.16" y="52.55" x="47.14" class="cls-2"/>
-  <rect id="svg_7" fill="#1d3461" height="3.96" width="33.22" y="31.82" x="7.7" class="cls-2"/>
-  <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Roboto Mono'" font-size="33" stroke-width="0" id="svg_13" y="33.87523" x="49.1408" fill="#1d3461">TVG</text>
- </g>
-</svg>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><style>.cls-1{fill:#1d201f;}.cls-2{fill:#b4656f;}</style></defs><rect class="cls-1" width="400" height="400"/><path class="cls-2" d="M173.29,249.46H83.43V227.83L137.66,162H87.88V139.72h84.77v22.11L118.9,227.19h54.39Z"/><path class="cls-2" d="M215.75,144c0,8.59-5.89,14-14.79,14s-14.79-5.41-14.79-14,5.88-14,14.79-14S215.75,135.43,215.75,144ZM186.64,249.46V164.53h28.63v84.93Z"/><path class="cls-2" d="M261.07,224.65v24.81H232.44V132.56h28.63v67.6L291,164.53h33.56l-35.94,39,36.42,46H289.86L267.12,218Z"/></svg>

@@ -2,8 +2,8 @@
   <button *ngIf="isMobile && user != null" mat-icon-button (click)="toggleSidenav()">
     <mat-icon>menu</mat-icon>
   </button>
-  <img id="logo" routerLink="/" src="/assets/images/logo.svg" [style]="{width: isMobile ? '54px' : null}" />
-  <button routerLink="/" routerLinkActive="bg-primary text-accent" [routerLinkActiveOptions]="{exact: true}" mat-button class="h-100 brd-0">
+  <img id="logo" routerLink="/" src="/assets/images/logo.svg" />
+  <button routerLink="/" routerLinkActive="bg-primary" [routerLinkActiveOptions]="{exact: true}" mat-button class="h-100 brd-0">
     <mat-icon>home</mat-icon>
     <span>Home</span>
   </button>
