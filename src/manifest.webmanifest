@@ -1,8 +1,8 @@
 {
   "name": "ZikMash",
   "short_name": "ZikMash",
-  "theme_color": "#98c1d9",
-  "background_color": "#fafafa",
+  "theme_color": "#4E937A",
+  "background_color": "#FFFAFF",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
