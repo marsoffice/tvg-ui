@@ -45,6 +45,7 @@ import { JobsComponent } from './jobs/jobs.component';
 import { VideosComponent } from './videos/videos.component';
 import { AddEditJobComponent } from './add-edit-job/add-edit-job.component';
 import { CronModule } from './shared/cron/cron.module';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 
@@ -104,6 +105,7 @@ if (!environment.production) {
     MatSidenavModule,
     MatSnackBarModule,
     ConfirmationModule,
+    MatStepperModule,
 
 
     MsalModule.forRoot(
