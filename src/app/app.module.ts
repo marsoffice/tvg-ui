@@ -42,6 +42,9 @@ import { FunctionProxyInterceptor } from './services/function-proxy.interceptor'
 import { ConfirmationModule } from './shared/confirmation/confirmation.module';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { JobsComponent } from './jobs/jobs.component';
+import { VideosComponent } from './videos/videos.component';
+import { AddEditJobComponent } from './add-edit-job/add-edit-job.component';
+import { CronModule } from './shared/cron/cron.module';
 
 
 
@@ -81,6 +84,8 @@ if (!environment.production) {
     AuthErrorComponent,
     UserSettingsComponent,
     JobsComponent,
+    VideosComponent,
+    AddEditJobComponent,
   ],
   imports: [
     SharedModule,
@@ -89,6 +94,7 @@ if (!environment.production) {
     BrowserAnimationsModule,
     HttpClientModule,
     FlexLayoutModule,
+    CronModule,
 
     MatToolbarModule,
     MatButtonModule,
