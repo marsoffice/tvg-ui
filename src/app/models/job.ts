@@ -1,10 +1,17 @@
 export interface Job {
+  // Nu se seteaza deloc
   id?: string;
   userId?: string;
-  name: string;
+
+  // General
+  name: string; // required
   preferredDurationInSeconds?: number;
   disabled?: boolean;
-  cron: string;
+  cron: string; // required
+
+
+
+  // 2. Content
   contentType?: string;
   contentTopic?: string;
   contentStartDate?: string;
@@ -16,20 +23,32 @@ export interface Job {
   contentTranslateFromLanguage?: string;
   contentTranslateToLanguage?: string;
   contentNoOfIncludedTopComments?: number;
+
+
+  // 3. Speech
   speechPitch?: number;
   speechSpeed?: number;
   speechLanguage?: string;
   speechType?: string;
   speechPauseBeforeInMillis?: number;
   speechPauseAfterInMillis?: number;
+
+
+  // 4. Audio Background
   audioBackgroundQuality?: number;
   audioBackgroundVolumeInPercent?: number;
+
+  // 5. Video Background
   videoBackgroundResolution?: string;
+
+  // 6. Text Box
   textFontFamily?: string;
   textFontSize?: number;
   textBoxColor?: string;
   textBoxOpacity?: number;
   texBoxBorderColor?: string;
+
+  // 7. Upload
   disableAutoUpload?: boolean;
   postDescription?: string;
   editorVideoResolution?: string;
