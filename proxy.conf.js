@@ -30,5 +30,17 @@ module.exports = {
   "/api/translate": {
     target: "http://localhost:7011",
     secure: false,
-  }
+  },
+  "/api/audiodownloader": {
+    target: "http://localhost:7008",
+    secure: false,
+  },
+  "/api/videodownloader": {
+    target: "http://localhost:7009",
+    secure: false,
+  },
+  "/api/tiktok": {
+    target: "http://localhost:7010",
+    secure: false,
+  },
 };

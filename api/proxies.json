@@ -80,6 +80,36 @@
       "requestOverrides": {
         "backend.request.headers.Authorization": "{request.headers.x-authorization}"
       }
+    },
+    "tiktok": {
+      "debug": false,
+      "matchCondition": {
+        "route": "/api/tiktok/{*restOfPath}"
+      },
+      "backendUri": "%tiktok_url%/api/tiktok/{restOfPath}",
+      "requestOverrides": {
+        "backend.request.headers.Authorization": "{request.headers.x-authorization}"
+      }
+    },
+    "videodownloader": {
+      "debug": false,
+      "matchCondition": {
+        "route": "/api/videodownloader/{*restOfPath}"
+      },
+      "backendUri": "%videodownloader_url%/api/videodownloader/{restOfPath}",
+      "requestOverrides": {
+        "backend.request.headers.Authorization": "{request.headers.x-authorization}"
+      }
+    },
+    "audiodownloader": {
+      "debug": false,
+      "matchCondition": {
+        "route": "/api/audiodownloader/{*restOfPath}"
+      },
+      "backendUri": "%audiodownloader_url%/api/audiodownloader/{restOfPath}",
+      "requestOverrides": {
+        "backend.request.headers.Authorization": "{request.headers.x-authorization}"
+      }
     }
   }
 }

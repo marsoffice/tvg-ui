@@ -36,6 +36,18 @@ module.exports = {
       from: "/api/translate(.*)",
       to: "http://localhost:7011/api/translate$1",
     },
+    {
+      from: "/api/audiodownloader(.*)",
+      to: "http://localhost:7008/api/audiodownloader$1",
+    },
+    {
+      from: "/api/videodownloader(.*)",
+      to: "http://localhost:7009/api/videodownloader$1",
+    },
+    {
+      from: "/api/tiktok(.*)",
+      to: "http://localhost:7010/api/tiktok$1",
+    },
   ],
   directory: "dist/tvg-ui",
   logFormat: "stats",
