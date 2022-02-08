@@ -33,4 +33,5 @@ export interface Job {
   disableAutoUpload?: boolean;
   postDescription?: string;
   editorVideoResolution?: string;
+  autoUploadTikTokAccounts?: string;
 }
