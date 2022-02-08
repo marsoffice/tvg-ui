@@ -14,6 +14,7 @@ export interface Job {
   // 2. Content
   contentType?: string;
   contentTopic?: string;
+  contentGetLatestPosts?: boolean;
   contentStartDate?: string;
   contentMinChars?: number;
   contentMaxChars?: number;
