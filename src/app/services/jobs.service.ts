@@ -17,6 +17,10 @@ export class JobsService {
     return this.http.get<Job>(`/api/jobs/getJob/${id}`);
   }
 
+  startJob(id: string) {
+    return this.http.get(`/api/jobs/startJob/${id}`);
+  }
+
   createJob(payload: Job) {
     return this.http.post<Job>(`/api/jobs/createJob`, payload);
   }
