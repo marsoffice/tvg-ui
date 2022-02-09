@@ -11,4 +11,8 @@ export class SpeechService {
   getAllSpeechTypes() {
     return this.http.get<string[]>(`/api/speech/getAllSpeechTypes`);
   }
+
+  getAllSpeechLanguages() {
+    return this.http.get<string[]>(`/api/speech/getAllSpeechLanguages`);
+  }
 }
