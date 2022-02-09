@@ -46,6 +46,11 @@ import { VideosComponent } from './videos/videos.component';
 import { AddEditJobComponent } from './add-edit-job/add-edit-job.component';
 import { CronModule } from './shared/cron/cron.module';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatInputModule} from '@angular/material/input';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -103,9 +108,16 @@ if (!environment.production) {
     MatMenuModule,
     MatSlideToggleModule,
     MatSidenavModule,
+    MatFormFieldModule,
     MatSnackBarModule,
     ConfirmationModule,
     MatStepperModule,
+    MatInputModule,
+    MatExpansionModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    FormsModule,
+
 
 
     MsalModule.forRoot(

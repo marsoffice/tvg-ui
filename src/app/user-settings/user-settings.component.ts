@@ -7,6 +7,7 @@ import { UserSettingsService } from '../services/user-settings.service';
   styleUrls: ['./user-settings.component.scss']
 })
 export class UserSettingsComponent implements OnInit {
+  panelOpenState = false;
 
   constructor(private userSettingsService: UserSettingsService) { }
 
