@@ -29,7 +29,6 @@ export interface Job {
   // 3. Speech
   speechPitch?: number;
   speechSpeed?: number;
-  speechLanguage?: string;
   speechType?: string;
   speechPauseBeforeInMillis?: number;
   speechPauseAfterInMillis?: number;
