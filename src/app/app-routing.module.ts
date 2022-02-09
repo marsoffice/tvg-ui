@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MsalGuard } from '@azure/msal-angular';
+import { AddEditJobComponent } from './add-edit-job/add-edit-job.component';
 import { AuthErrorComponent } from './auth-error/auth-error.component';
 import { HomeComponent } from './home/home.component';
 import { JobsComponent } from './jobs/jobs.component';
@@ -30,6 +31,16 @@ const routes: Routes = [
   {
     path: 'jobs',
     component: JobsComponent,
+    canActivate: [MsalGuard],
+  },
+  {
+    path: 'jobs/add',
+    component: AddEditJobComponent,
+    canActivate: [MsalGuard],
+  },
+  {
+    path: 'jobs/:id',
+    component: AddEditJobComponent,
     canActivate: [MsalGuard],
   },
   {
