@@ -32,6 +32,7 @@ export interface Job {
   speechType?: string;
   speechPauseBeforeInMillis?: number;
   speechPauseAfterInMillis?: number;
+  speechLanguage?: string;
 
 
   // 4. Audio Background
