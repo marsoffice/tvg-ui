@@ -1,72 +1,7 @@
+<div style="width: 100%; height: 100%; position: relative">
+  tabel aici
 
-
-  <mat-stepper labelPosition="bottom" #stepper>
-    <mat-step >
-        <ng-template matStepLabel>General</ng-template>
-        <mat-stepper orientation="vertical">
-            <mat-step>
-              <ng-template matStepLabel>Name</ng-template>
-              <ng-template matStepContent>
-                <p>This content was rendered lazily</p>
-                <button mat-button matStepperNext>Next</button>
-              </ng-template>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Step 2</ng-template>
-              <ng-template matStepContent>
-                <p>This content was also rendered lazily</p>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
-              </ng-template>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Step 3</ng-template>
-              <p>This content was rendered eagerly</p>
-              <button mat-button matStepperPrevious>Back</button>
-            </mat-step>
-          </mat-stepper>
-          <br>
-          aaaaaaaa
-    </mat-step>
-
-
-
-    <mat-step >
-        <ng-template matStepLabel>Content</ng-template>
-        <mat-stepper orientation="vertical">
-            <mat-step>
-              <ng-template matStepLabel>aaa</ng-template>
-              <ng-template matStepContent>
-                <p>This content was rendered lazily</p>
-                <button mat-button matStepperNext>Next</button>
-              </ng-template>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Step 2</ng-template>
-              <ng-template matStepContent>
-                <p>This content was also rendered lazily</p>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
-              </ng-template>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Step 3</ng-template>
-              <p>This content was rendered eagerly</p>
-              <button mat-button matStepperPrevious>Back</button>
-            </mat-step>
-          </mat-stepper>
-    </mat-step>
-
-
-
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
-    </mat-step>
-
-
-  </mat-stepper>
+  <button style="position: absolute; right: 0; bottom: 0;" mat-fab color="accent" routerLink="/jobs/add">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
