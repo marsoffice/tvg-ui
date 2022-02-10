@@ -8,8 +8,8 @@ export class SpeechService {
 
   constructor(private http: HttpClient) { }
 
-  getAllSpeechTypes() {
-    return this.http.get<string[]>(`/api/speech/getAllSpeechTypes`);
+  getAllSpeechTypes(language: string | undefined = undefined) {
+    return this.http.get<string[]>(`/api/speech/getAllSpeechTypes${language == null ? '' : '/' + language}`);
   }
 
   getAllSpeechLanguages() {
