@@ -55,3 +55,5 @@ export interface Job {
   editorVideoResolution?: string;
   autoUploadTikTokAccounts?: string;
 }
+
+

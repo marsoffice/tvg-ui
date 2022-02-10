@@ -1,6 +1,7 @@
 
 
   <mat-stepper labelPosition="bottom" #stepper>
+    <form [formGroup]="job">
     <mat-step >
       <ng-template matStepLabel>General</ng-template>
       <mat-stepper orientation="vertical">
@@ -67,5 +68,5 @@
       </div>
     </mat-step>
 
-
+  </form>
   </mat-stepper>
