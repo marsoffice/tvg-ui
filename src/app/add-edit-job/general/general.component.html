@@ -15,10 +15,10 @@
         </mat-step>
     
         <mat-step>
-          <ng-template matStepLabel>Preferred duration in seconds</ng-template>
+          <ng-template matStepLabel>Preferred Duration In Seconds</ng-template>
           <ng-template matStepContent>
             <mat-form-field class="w-100" appearance="fill">
-              <mat-label>Preferred duration in seconds</mat-label>
+              <mat-label>Preferred Duration In Seconds</mat-label>
               <input
                 type="number"
                 formControlName="preferredDurationInSeconds"
@@ -35,16 +35,15 @@
         <mat-step>
           <ng-template matStepLabel>Disabled</ng-template>
           <ng-template matStepContent>
-            <mat-checkbox formControlName="disabled" class="example-margin"
-              >Disabled</mat-checkbox
-            >
+            <mat-checkbox formControlName="disabled" class="example-margin">Disabled</mat-checkbox>
+
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext>Next</button>
           </ng-template>
         </mat-step>
     
         <mat-step>
-          <ng-template matStepLabel>CRON</ng-template>
+          <ng-template matStepLabel>Cron</ng-template>
           <ng-template matStepContent>
             <app-cron formControlName="cron"></app-cron>
             

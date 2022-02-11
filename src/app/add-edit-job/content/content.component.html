@@ -1,35 +1,138 @@
 <form [formGroup]="job">
   <mat-stepper color="accent" orientation="vertical" #stepper>
       <mat-step>
-        <ng-template matStepLabel>Name</ng-template>
+        <ng-template matStepLabel>Content Type</ng-template>
         <ng-template matStepContent>
-          test
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Content Type</mat-label>
+            <input formControlName="contentType" matInput placeholder="" value="" />
+          </mat-form-field>
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
   
       <mat-step>
-        <ng-template matStepLabel>Preferred duration in seconds</ng-template>
+        <ng-template matStepLabel>Content Topic</ng-template>
         <ng-template matStepContent>
-          test
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Content Topic</mat-label>
+            <input formControlName="contentTopic" matInput placeholder="" value="" />
+          </mat-form-field>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
   
       <mat-step>
-        <ng-template matStepLabel>adasdas</ng-template>
+        <ng-template matStepLabel>Content Get Latest Posts</ng-template>
         <ng-template matStepContent>
-          test
+          <mat-checkbox formControlName="contentGetLatestPosts" class="example-margin">Disabled</mat-checkbox>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Content Start Date</ng-template>
+        <ng-template matStepContent>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Content Start Date</mat-label>
+            <input formControlName="contentStartDate" matInput placeholder="" value="" />
+          </mat-form-field>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Content Min Chars</ng-template>
+        <ng-template matStepContent>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Content Min Chars</mat-label>
+            <input type="number" formControlName="contentMinChars" matInput placeholder="" value="" />
+          </mat-form-field>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
+
+
+      <mat-step>
+        <ng-template matStepLabel>Content Max Chars</ng-template>
+        <ng-template matStepContent>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Content Max Chars</mat-label>
+            <input type="number" formControlName="contentMaxChars" matInput placeholder="" value="" />
+          </mat-form-field>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Content Include Links</ng-template>
+        <ng-template matStepContent>
+          <mat-checkbox formControlName="contentIncludeLinks" class="example-margin">Content Include Links</mat-checkbox>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Content Min Posts</ng-template>
+        <ng-template matStepContent>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Content Min Posts</mat-label>
+            <input type="number" formControlName="contentMinPosts" matInput placeholder="" value="" />
+          </mat-form-field>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Content Max Posts</ng-template>
+        <ng-template matStepContent>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Content Max Posts</mat-label>
+            <input type="number" formControlName="contentMaxPosts" matInput placeholder="" value="" />
+          </mat-form-field>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Content Translate From Language</ng-template>
+        <ng-template matStepContent>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Content Translate From Language</mat-label>
+            <input formControlName="contentTranslateFromLanguage" matInput placeholder="" value="" />
+          </mat-form-field>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Content Translate To Language</ng-template>
+        <ng-template matStepContent>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Content Translate To Language</mat-label>
+            <input formControlName="contentTranslateToLanguage" matInput placeholder="" value="" />
+          </mat-form-field>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
   
       <mat-step>
-        <ng-template matStepLabel>asd</ng-template>
+        <ng-template matStepLabel>Content No Of Included Top Comments</ng-template>
         <ng-template matStepContent>
-          asd
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Content No Of Included Top Comments</mat-label>
+            <input formControlName="contentNoOfIncludedTopComments" matInput placeholder="" value="" />
+          </mat-form-field>
           
           <button mat-button (click)="stepper.reset()">Reset</button>
           <button mat-button matStepperPrevious>Back</button>

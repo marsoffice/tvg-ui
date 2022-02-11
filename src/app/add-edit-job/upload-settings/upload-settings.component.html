@@ -1,35 +1,45 @@
 <form [formGroup]="job">
   <mat-stepper color="accent" orientation="vertical" #stepper>
       <mat-step>
-        <ng-template matStepLabel>Name</ng-template>
+        <ng-template matStepLabel>Disable Auto Upload</ng-template>
         <ng-template matStepContent>
-          test
+          <mat-checkbox formControlName="disableAutoUpload" class="example-margin">Disable Auto Upload</mat-checkbox>
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
   
       <mat-step>
-        <ng-template matStepLabel>Preferred duration in seconds</ng-template>
+        <ng-template matStepLabel>Post Description</ng-template>
         <ng-template matStepContent>
-          test
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Post Description</mat-label>
+            <input formControlName="postDescription" matInput placeholder="" value="" />
+          </mat-form-field>
+          
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
   
       <mat-step>
-        <ng-template matStepLabel>adasdas</ng-template>
+        <ng-template matStepLabel>Editor Video Resolution</ng-template>
         <ng-template matStepContent>
-          test
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Editor Video Resolution</mat-label>
+            <input formControlName="editorVideoResolution" matInput placeholder="" value="" />
+          </mat-form-field>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
   
       <mat-step>
-        <ng-template matStepLabel>asd</ng-template>
+        <ng-template matStepLabel>Auto Upload TikTok Accounts</ng-template>
         <ng-template matStepContent>
-          asd
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Auto Upload TikTok Accounts</mat-label>
+            <input formControlName="autoUploadTikTokAccounts" matInput placeholder="" value="" />
+          </mat-form-field>
           
           <button mat-button (click)="stepper.reset()">Reset</button>
           <button mat-button matStepperPrevious>Back</button>
