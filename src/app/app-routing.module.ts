@@ -8,6 +8,7 @@ import { JobsComponent } from './jobs/jobs.component';
 import { LoggedOutComponent } from './logged-out/logged-out.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { VideosComponent } from './videos/videos.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,11 @@ const routes: Routes = [
     path: 'jobs/:id',
     component: AddEditJobComponent,
     canActivate: [MsalGuard],
+  },
+  {
+    path: 'jobs/:id/videos',
+   component: VideosComponent,
+   canActivate: [MsalGuard],
   },
   {
     path: '**',

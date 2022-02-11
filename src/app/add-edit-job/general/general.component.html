@@ -1,0 +1,57 @@
+<form [formGroup]="job">
+    <mat-stepper color="accent" orientation="vertical" #stepper>
+        <mat-step>
+          <ng-template matStepLabel>Name</ng-template>
+          <ng-template matStepContent>
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Name</mat-label>
+              <input formControlName="name" matInput placeholder="" value="" />
+              <mat-error *ngIf="job.get('name')!.hasError('required')"
+                >Name is required</mat-error
+              >
+            </mat-form-field>
+            <button mat-button matStepperNext>Next</button>
+          </ng-template>
+        </mat-step>
+    
+        <mat-step>
+          <ng-template matStepLabel>Preferred duration in seconds</ng-template>
+          <ng-template matStepContent>
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Preferred duration in seconds</mat-label>
+              <input
+                type="number"
+                formControlName="preferredDurationInSeconds"
+                matInput
+                placeholder=""
+                value=""
+              />
+            </mat-form-field>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </ng-template>
+        </mat-step>
+    
+        <mat-step>
+          <ng-template matStepLabel>Disabled</ng-template>
+          <ng-template matStepContent>
+            <mat-checkbox formControlName="disabled" class="example-margin"
+              >Disabled</mat-checkbox
+            >
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </ng-template>
+        </mat-step>
+    
+        <mat-step>
+          <ng-template matStepLabel>CRON</ng-template>
+          <ng-template matStepContent>
+            <app-cron formControlName="cron"></app-cron>
+            
+            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </ng-template>
+        </mat-step>
+      </mat-stepper>
+</form>

@@ -22,11 +22,6 @@ export class UserSettingsComponent implements OnInit {
     code: new FormControl('')
   })
 
-  
-
-  
-
-  
 
   constructor(private userSettingsService: UserSettingsService, private toast: ToastService) { }
 
@@ -59,7 +54,7 @@ export class UserSettingsComponent implements OnInit {
     this.panelOpenState = true;
   }
 
-  clickdelete(poz:any){
+  clickdelete(poz: number){
     const list = this.settingsForm.controls.tikTokAccounts.value;
     list.splice(poz, 1);
     this.settingsForm.controls.tikTokAccounts.setValue(list);

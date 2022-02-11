@@ -52,6 +52,13 @@ import {MatCardModule} from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { GeneralComponent } from './add-edit-job/general/general.component';
+import { ContentComponent } from './add-edit-job/content/content.component';
+import { SpeechComponent } from './add-edit-job/speech/speech.component';
+import { AudioBackgroundComponent } from './add-edit-job/audio-background/audio-background.component';
+import { VideoBackgroundComponent } from './add-edit-job/video-background/video-background.component';
+import { TextBoxComponent } from './add-edit-job/text-box/text-box.component';
+import { UploadSettingsComponent } from './add-edit-job/upload-settings/upload-settings.component';
 
 
 
@@ -93,6 +100,13 @@ if (!environment.production) {
     JobsComponent,
     VideosComponent,
     AddEditJobComponent,
+    GeneralComponent,
+    ContentComponent,
+    SpeechComponent,
+    AudioBackgroundComponent,
+    VideoBackgroundComponent,
+    TextBoxComponent,
+    UploadSettingsComponent,
   ],
   imports: [
     SharedModule,

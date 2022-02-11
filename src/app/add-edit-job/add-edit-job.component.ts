@@ -12,55 +12,63 @@ export class AddEditJobComponent implements OnInit {
   job = new FormGroup({
   // General
   name: new FormControl('', [Validators.required]), // required
-  preferredDurationInSeconds: new FormControl(0), 
-  disabled: new FormControl(false),
+  preferredDurationInSeconds: new FormControl(), 
+  disabled: new FormControl(),
   cron: new FormControl('', [Validators.required]), // required
   // 2. Content
   contentType: new FormControl(),
   contentTopic: new FormControl(),
-  contentGetLatestPosts: new FormControl(false),
+  contentGetLatestPosts: new FormControl(),
   contentStartDate: new FormControl(),
-  contentMinChars: new FormControl(0),
-  contentMaxChars: new FormControl(0),
-  contentIncludeLinks: new FormControl(false),
-  contentMinPosts: new FormControl(0),
-  contentMaxPosts: new FormControl(0),
+  contentMinChars: new FormControl(),
+  contentMaxChars: new FormControl(),
+  contentIncludeLinks: new FormControl(),
+  contentMinPosts: new FormControl(),
+  contentMaxPosts: new FormControl(),
   contentTranslateFromLanguage: new FormControl(),
   contentTranslateToLanguage: new FormControl(),
-  contentNoOfIncludedTopComments: new FormControl(0),
+  contentNoOfIncludedTopComments: new FormControl(),
   // 3. Speech
-  speechPitch: new FormControl(0),
-  speechSpeed: new FormControl(0),
+  speechPitch: new FormControl(),
+  speechSpeed: new FormControl(),
   speechType: new FormControl(),
-  speechPauseBeforeInMillis: new FormControl(0),
-  speechPauseAfterInMillis: new FormControl(0),
+  speechPauseBeforeInMillis: new FormControl(),
+  speechPauseAfterInMillis: new FormControl(),
   speechLanguage: new FormControl(),
   // 4. Audio Background
-  audioBackgroundQuality: new FormControl(0),
-  audioBackgroundVolumeInPercent: new FormControl(0),
+  audioBackgroundQuality: new FormControl(),
+  audioBackgroundVolumeInPercent: new FormControl(),
   // 5. Video Background
   videoBackgroundResolution: new FormControl(),
   // 6. Text Box
   textFontFamily: new FormControl(),
-  textFontSize: new FormControl(0),
+  textFontSize: new FormControl(),
   textBoxColor: new FormControl(),
-  textBoxOpacity: new FormControl(0),
+  textBoxOpacity: new FormControl(),
   texBoxBorderColor: new FormControl(),
   // 7. Upload
-  disableAutoUpload: new FormControl(false),
+  disableAutoUpload: new FormControl(),
   postDescription: new FormControl(),
   editorVideoResolution: new FormControl(),
   autoUploadTikTokAccounts: new FormControl()
 
   })
 
-  id = ''
+  id: string | undefined;
 
-  constructor(private jobsService: JobsService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private jobsService: JobsService, private route: ActivatedRoute, private router: Router) {
+    
+   }
 
   ngOnInit(): void {
     this.route.params.subscribe(rez =>{
            this.id = rez.id
+
+           if (this.id != null){
+             this.jobsService.getJob(this.id).subscribe(rez =>{
+                this.job.patchValue(rez)
+             })
+           }
     })
 
   }
@@ -68,8 +76,14 @@ export class AddEditJobComponent implements OnInit {
   clickaddjob(){
     if (this.id == null){
    //add
+   this.jobsService.createJob(this.job.value).subscribe(rez =>{
+     this.router.navigateByUrl('/jobs')
+   })
     }else{
    //edit
+   this.jobsService.updateJob(this.id, this.job.value).subscribe(rez =>{
+     this.router.navigateByUrl('/jobs')
+   })
     }
 
   }

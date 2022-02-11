@@ -1,72 +1,83 @@
+<mat-stepper labelPosition="bottom" #stepper>
+  <mat-step>
+    <ng-template matStepLabel>General</ng-template>
+    <ng-template matStepContent>
+      <app-general [job]="job"></app-general>
+      
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+    </ng-template>
+  </mat-step>
 
+  <mat-step>
+    <ng-template matStepLabel>Content</ng-template>
+    <ng-template matStepContent>
+      <app-content [job]="job"></app-content>
+      
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+    </ng-template>
+  </mat-step>
 
-  <mat-stepper labelPosition="bottom" #stepper>
-    <form [formGroup]="job">
-    <mat-step >
-      <ng-template matStepLabel>General</ng-template>
-      <mat-stepper orientation="vertical">
-          <mat-step>
-            <ng-template matStepLabel>aaa</ng-template>
-            <ng-template matStepContent>
-              <p>This content was rendered lazily</p>
-              <button mat-button matStepperNext>Next</button>
-            </ng-template>
-          </mat-step>
-          <mat-step>
-            <ng-template matStepLabel>Step 2</ng-template>
-            <ng-template matStepContent>
-              <p>This content was also rendered lazily</p>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </ng-template>
-          </mat-step>
-          <mat-step>
-            <ng-template matStepLabel>Step 3</ng-template>
-            <p>This content was rendered eagerly</p>
-            <button mat-button matStepperPrevious>Back</button>
-          </mat-step>
-        </mat-stepper>
-       
-    </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Speech</ng-template>
+    <ng-template matStepContent>
+      <app-speech [job]="job"></app-speech>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </ng-template>
 
+  </mat-step>
 
+  <mat-step>
+    <ng-template matStepLabel>Audio Background</ng-template>
+    <ng-template matStepContent>
+      <app-audio-background [job]="job"></app-audio-background>
+      
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+    </ng-template>
+  </mat-step>
 
-    <mat-step >
-        <ng-template matStepLabel>Content</ng-template>
-        <mat-stepper orientation="vertical">
-            <mat-step>
-              <ng-template matStepLabel>aaa</ng-template>
-              <ng-template matStepContent>
-                <p>This content was rendered lazily</p>
-                <button mat-button matStepperNext>Next</button>
-              </ng-template>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Step 2</ng-template>
-              <ng-template matStepContent>
-                <p>This content was also rendered lazily</p>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
-              </ng-template>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Step 3</ng-template>
-              <p>This content was rendered eagerly</p>
-              <button mat-button matStepperPrevious>Back</button>
-            </mat-step>
-          </mat-stepper>
-    </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Video Background</ng-template>
+    <ng-template matStepContent>
+      <app-video-background [job]="job"></app-video-background>
+      
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+    </ng-template>
+  </mat-step>
 
+  <mat-step>
+    <ng-template matStepLabel>Text Box</ng-template>
+    <ng-template matStepContent>
+      <app-text-box [job]="job"></app-text-box>
+      
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+    </ng-template>
+  </mat-step>
 
-
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
+  <mat-step>
+    <ng-template matStepLabel>Upload Settings</ng-template>
+    <ng-template matStepContent>
+      <app-upload-settings [job]="job"></app-upload-settings>
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
       </div>
-    </mat-step>
-
-  </form>
-  </mat-stepper>
+    </ng-template>
+  </mat-step>
+</mat-stepper>

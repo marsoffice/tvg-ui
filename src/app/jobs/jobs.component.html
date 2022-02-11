@@ -1,7 +1,51 @@
-<div style="width: 100%; height: 100%; position: relative">
-  tabel aici
+<div class="container" style="width: 100%; height: 100%; position: relative">
+  
+  <div class="row g-0">
+    <div class="col-12">
+      <mat-accordion *ngFor="let j of jobs; let poz=index;" >
+        <mat-expansion-panel [(expanded)]="panelOpenState" >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+           {{j.id}}
+            </mat-panel-title>
 
-  <button style="position: absolute; right: 0; bottom: 0;" mat-fab color="accent" routerLink="/jobs/add">
-    <mat-icon>add</mat-icon>
-  </button>
+          </mat-expansion-panel-header>
+          <div class="row g-0">
+            <div class="col-12 col-sm-6">
+              <b>{{j.name}}</b>
+            </div>
+
+            <div class="col-12 col-sm-6 d-flex justify-content-end">
+              <button mat-icon-button routerLink="/jobs/{{j.id}}/videos"> <mat-icon>visibility</mat-icon></button>
+              <button mat-icon-button routerLink="/jobs/{{j.id}}"> <mat-icon>edit</mat-icon></button>
+              <button (click)="deletejob(j.id, poz)" mat-icon-button> <mat-icon>delete</mat-icon></button>
+            </div>
+          </div>
+
+         <div class="row g-0">
+           <div class="col-12">
+             <app-cron></app-cron>
+          </div>
+         </div>
+
+         <div class="row">
+          <div class="col-12">
+             <mat-card>{{j.autoUploadTikTokAccounts}}</mat-card>
+          </div>
+        </div>
+        
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+<br /><br />
+
+
+  <div class="row g-0">
+    <div class="col-12">
+      <button style="position: absolute; right: 0; bottom: 0;" mat-fab color="accent" routerLink="/jobs/add">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>

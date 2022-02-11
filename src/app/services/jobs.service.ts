@@ -25,8 +25,8 @@ export class JobsService {
     return this.http.post<Job>(`/api/jobs/createJob`, payload);
   }
 
-  updateJob(payload: Job) {
-    return this.http.put<Job>(`/api/jobs/updateJob`, payload);
+  updateJob(id:string, payload: Job) {
+    return this.http.put<Job>(`/api/jobs/updateJob/${id}`, payload);
   }
 
   deleteJob(id: string) {

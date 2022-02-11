@@ -1,0 +1,40 @@
+<form [formGroup]="job">
+  <mat-stepper color="accent" orientation="vertical" #stepper>
+      <mat-step>
+        <ng-template matStepLabel>Name</ng-template>
+        <ng-template matStepContent>
+          test
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
+  
+      <mat-step>
+        <ng-template matStepLabel>Preferred duration in seconds</ng-template>
+        <ng-template matStepContent>
+          test
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
+  
+      <mat-step>
+        <ng-template matStepLabel>adasdas</ng-template>
+        <ng-template matStepContent>
+          test
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
+  
+      <mat-step>
+        <ng-template matStepLabel>asd</ng-template>
+        <ng-template matStepContent>
+          asd
+          
+          <button mat-button (click)="stepper.reset()">Reset</button>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Save</button>
+        </ng-template>
+      </mat-step>
+    </mat-stepper>
+</form>
