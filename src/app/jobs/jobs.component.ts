@@ -8,7 +8,6 @@ import { JobsService } from '../services/jobs.service';
   styleUrls: ['./jobs.component.scss']
 })
 export class JobsComponent implements OnInit {
-  panelOpenState = false
 
   jobs: Job[] = []
 
@@ -32,6 +31,10 @@ export class JobsComponent implements OnInit {
       return [];
     }
     return x.split(',');
+  }
+
+  startJob(id:string | undefined, poz:number){
+
   }
 
 }
