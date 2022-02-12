@@ -3,7 +3,7 @@
   <div class="row g-0">
     <div class="col-12">
       <mat-accordion *ngFor="let j of jobs; let poz=index;" >
-        <mat-expansion-panel [(expanded)]="panelOpenState" >
+        <mat-expansion-panel  [style.background]="j.disabled ? '#ccc' : '#fff'" [(expanded)]="panelOpenState" >
           <mat-expansion-panel-header>
             <mat-panel-title>
            {{j.id}}
@@ -30,7 +30,7 @@
 
          <div class="row">
           <div class="col-12">
-             <mat-card>{{j.autoUploadTikTokAccounts}}</mat-card>
+             <mat-card *ngFor="let ta of stringToList(j.autoUploadTikTokAccounts)">{{ta}}</mat-card>
           </div>
         </div>
         

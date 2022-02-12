@@ -27,4 +27,11 @@ export class JobsComponent implements OnInit {
 
   }
 
+  stringToList(x: string | undefined) {
+    if (x == null || x === '') {
+      return [];
+    }
+    return x.split(',');
+  }
+
 }
