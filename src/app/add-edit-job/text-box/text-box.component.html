@@ -5,8 +5,14 @@
         <ng-template matStepContent>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Text Font Family</mat-label>
-            <input formControlName="textFontFamily" matInput placeholder="" value="" />
+            <mat-select formControlName="textFontFamily"  disableRipple>
+              <mat-option [value]="null">-</mat-option>
+              <mat-option *ngFor="let text of textsFontFamily" [value]="text">{{text}}</mat-option>
+            </mat-select>
           </mat-form-field>
+          
+
+         
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
@@ -28,7 +34,7 @@
         <ng-template matStepContent>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Text Box Color</mat-label>
-            <input formControlName="textBoxColor" matInput placeholder="" value="" />
+            <input type="color" formControlName="textBoxColor" matInput placeholder="" value="" />
           </mat-form-field>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
@@ -53,12 +59,11 @@
         <ng-template matStepContent>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Tex Box Border Color</mat-label>
-            <input formControlName="texBoxBorderColor" matInput placeholder="" value="" />
+            <input type="color" formControlName="texBoxBorderColor" matInput placeholder="" value="" />
           </mat-form-field>
           
           <button mat-button (click)="stepper.reset()">Reset</button>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
     </mat-stepper>

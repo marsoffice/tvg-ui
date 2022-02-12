@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { EditorService } from 'src/app/services/editor.service';
 
 @Component({
   selector: 'app-text-box',
@@ -8,9 +9,15 @@ import { FormGroup } from '@angular/forms';
 })
 export class TextBoxComponent implements OnInit {
   @Input() job!: FormGroup;
-  constructor() { }
+
+  textsFontFamily: string[] =[]
+
+  constructor(private editorServices: EditorService) { }
 
   ngOnInit(): void {
+    this.editorServices.getAllFonts().subscribe(rez =>{
+      this.textsFontFamily = rez 
+    })
   }
 
 }

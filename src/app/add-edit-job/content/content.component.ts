@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ContentService } from 'src/app/services/content.service';
+import { TranslateService } from 'src/app/services/translate.service';
 
 @Component({
   selector: 'app-content',
@@ -8,9 +10,24 @@ import { FormGroup } from '@angular/forms';
 })
 export class ContentComponent implements OnInit {
   @Input() job!: FormGroup;
-  constructor() { }
+
+  contentTypes: string[] = []
+
+  allLanguages: string[] = []
+
+
+  constructor(private contentTypeServices: ContentService, private translateService: TranslateService) { }
 
   ngOnInit(): void {
+    this.contentTypeServices.getAllContentTypes().subscribe(rez =>{
+      this.contentTypes = rez 
+    })
+
+    this.translateService.getAllLanguages().subscribe(rez =>{
+      this.allLanguages = rez
+    })
+
+
   }
 
 }

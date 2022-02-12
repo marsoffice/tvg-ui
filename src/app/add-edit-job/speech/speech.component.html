@@ -22,13 +22,32 @@
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Speech Language</ng-template>
+        <ng-template matStepContent>
+
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Speech Language</mat-label>
+            <mat-select (selectionChange)="onSpeechLanguageChange()" formControlName="speechLanguage" disableRipple>
+              <mat-option [value]="null">-</mat-option>
+              <mat-option *ngFor="let language of speechLanguages" [value]="language">{{language}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
   
       <mat-step>
         <ng-template matStepLabel>Speech Type</ng-template>
         <ng-template matStepContent>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Speech Type</mat-label>
-            <input formControlName="speechType" matInput placeholder="" value="" />
+            <mat-select formControlName="speechType" disableRipple>
+              <mat-option [value]="null">-</mat-option>
+              <mat-option *ngFor="let type of speechTypes" [value]="type">{{type}}</mat-option>
+            </mat-select>
           </mat-form-field>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
@@ -54,22 +73,9 @@
             <mat-label>Speech Pause After In Millis</mat-label>
             <input type="number" formControlName="speechPauseAfterInMillis" matInput placeholder="" value="" />
           </mat-form-field>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </ng-template>
-      </mat-step>
-  
-      <mat-step>
-        <ng-template matStepLabel>Speech Language</ng-template>
-        <ng-template matStepContent>
-          <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Speech Language</mat-label>
-            <input formControlName="speechLanguage" matInput placeholder="" value="" />
-          </mat-form-field>
-          
           <button mat-button (click)="stepper.reset()">Reset</button>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+
         </ng-template>
       </mat-step>
     </mat-stepper>

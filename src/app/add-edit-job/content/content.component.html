@@ -5,7 +5,9 @@
         <ng-template matStepContent>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Content Type</mat-label>
-            <input formControlName="contentType" matInput placeholder="" value="" />
+            <mat-select formControlName="contentType" disableRipple>
+              <mat-option *ngFor="let type of contentTypes" [value]="type">{{type}}</mat-option>
+            </mat-select>
           </mat-form-field>
           <button mat-button matStepperNext>Next</button>
         </ng-template>
@@ -16,7 +18,7 @@
         <ng-template matStepContent>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Content Topic</mat-label>
-            <input formControlName="contentTopic" matInput placeholder="" value="" />
+            <input type="text" formControlName="contentTopic" matInput placeholder="" value="" />
           </mat-form-field>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
@@ -37,7 +39,7 @@
         <ng-template matStepContent>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Content Start Date</mat-label>
-            <input formControlName="contentStartDate" matInput placeholder="" value="" />
+            <input type="date" formControlName="contentStartDate" matInput placeholder="" value="" />
           </mat-form-field>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
@@ -107,7 +109,10 @@
         <ng-template matStepContent>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Content Translate From Language</mat-label>
-            <input formControlName="contentTranslateFromLanguage" matInput placeholder="" value="" />
+            <mat-select formControlName="contentTranslateFromLanguage" disableRipple>
+              <mat-option [value]="null">-</mat-option>
+              <mat-option *ngFor="let language of allLanguages" [value]="language">{{language}}</mat-option>
+            </mat-select>
           </mat-form-field>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
@@ -117,9 +122,12 @@
       <mat-step>
         <ng-template matStepLabel>Content Translate To Language</ng-template>
         <ng-template matStepContent>
-          <mat-form-field class="w-100" appearance="fill">
+          <mat-form-field class="w-100"  appearance="fill">
             <mat-label>Content Translate To Language</mat-label>
-            <input formControlName="contentTranslateToLanguage" matInput placeholder="" value="" />
+            <mat-select formControlName="contentTranslateToLanguage" disableRipple>
+              <mat-option [value]="null">-</mat-option>
+              <mat-option *ngFor="let language of allLanguages" [value]="language">{{language}}</mat-option>
+            </mat-select>
           </mat-form-field>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
@@ -131,12 +139,11 @@
         <ng-template matStepContent>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Content No Of Included Top Comments</mat-label>
-            <input formControlName="contentNoOfIncludedTopComments" matInput placeholder="" value="" />
+            <input type="number" formControlName="contentNoOfIncludedTopComments" matInput placeholder="" value="" />
           </mat-form-field>
           
           <button mat-button (click)="stepper.reset()">Reset</button>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
     </mat-stepper>

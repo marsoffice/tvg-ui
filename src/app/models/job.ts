@@ -12,27 +12,27 @@ export interface Job {
 
 
   // 2. Content
-  contentType?: string;
-  contentTopic?: string;
+  contentType?: string; //select - contentTypes
+  contentTopic?: string; //text
   contentGetLatestPosts?: boolean;
-  contentStartDate?: string;
+  contentStartDate?: string; //date
   contentMinChars?: number;
   contentMaxChars?: number;
   contentIncludeLinks?: boolean;
   contentMinPosts?: number;
   contentMaxPosts?: number;
-  contentTranslateFromLanguage?: string;
-  contentTranslateToLanguage?: string;
+  contentTranslateFromLanguage?: string; //select - contentLanguages - translate service
+  contentTranslateToLanguage?: string; //select - contentLanguages translate service
   contentNoOfIncludedTopComments?: number;
 
 
   // 3. Speech
   speechPitch?: number;
   speechSpeed?: number;
-  speechType?: string;
+  speechType?: string; //select - speechTypes speechservice
   speechPauseBeforeInMillis?: number;
   speechPauseAfterInMillis?: number;
-  speechLanguage?: string;
+  speechLanguage?: string; //select - speechLanguages speechservice
 
 
   // 4. Audio Background
@@ -40,20 +40,20 @@ export interface Job {
   audioBackgroundVolumeInPercent?: number;
 
   // 5. Video Background
-  videoBackgroundResolution?: string;
+  videoBackgroundResolution?: string; // string
 
   // 6. Text Box
-  textFontFamily?: string;
+  textFontFamily?: string; // select - fontTypes editor service
   textFontSize?: number;
-  textBoxColor?: string;
+  textBoxColor?: string; //color
   textBoxOpacity?: number;
-  texBoxBorderColor?: string;
+  texBoxBorderColor?: string; //color
 
   // 7. Upload
   disableAutoUpload?: boolean;
-  postDescription?: string;
-  editorVideoResolution?: string;
-  autoUploadTikTokAccounts?: string;
+  postDescription?: string; //text areea
+  editorVideoResolution?: string; // select - allResolutions editor service
+  autoUploadTikTokAccounts?: string; // multi select - tikTokAccounts din userSettings
 }
 
 
