@@ -30,9 +30,8 @@ export class VideosComponent implements OnInit, OnDestroy {
       this.videosService.getJobVideos(this.jobId!).subscribe({
         next: v => {
           this.videos = v;
-          this.signalrSub = this.hubService.subscribe('videoUpdate');
-          this._destroy.push(this.signalrSub.observable.subscribe(x => {
-            const vid: Video = x;
+          this.signalrSub = this.hubService.subscribe<Video>('videoUpdate');
+          this._destroy.push(this.signalrSub.observable.subscribe(vid => {
             let foundVid = this.videos?.find(x => x.id === vid.id && x.jobId === vid.jobId);
             if (foundVid == null) {
               foundVid = {
@@ -40,6 +39,7 @@ export class VideosComponent implements OnInit, OnDestroy {
                 jobId: vid.jobId,
                 name: vid.name
               };
+              this.videos?.push(foundVid);
             }
             foundVid.status = vid.status;
             foundVid.error = vid.error;
@@ -55,6 +55,9 @@ export class VideosComponent implements OnInit, OnDestroy {
             foundVid.finalFileSasUrl = vid.finalFileSasUrl;
             foundVid.audioBackgroundDone = vid.audioBackgroundDone;
             foundVid.videoBackgroundDone = vid.videoBackgroundDone;
+            if (this.videos != null) {
+              this.videos = [...this.videos!];
+            }
           }));
         },
         error: e => {
