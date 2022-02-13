@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Job } from '../models/job';
 import { JobsService } from '../services/jobs.service';
+import { ToastService } from '../shared/toast/services/toast.service';
 
 @Component({
   selector: 'app-jobs',
@@ -11,11 +12,11 @@ export class JobsComponent implements OnInit {
 
   jobs: Job[] = []
 
-  constructor(private jobsService: JobsService) { }
+  constructor(private jobsService: JobsService, private toastService: ToastService) { }
 
   ngOnInit(): void {
     this.jobsService.getJobs().subscribe(rez =>{
-      this.jobs = rez 
+      this.jobs = rez
     })
   }
 
@@ -33,8 +34,15 @@ export class JobsComponent implements OnInit {
     return x.split(',');
   }
 
-  startJob(id:string | undefined, poz:number){
-
+  startJob(id:string | undefined){
+    this.jobsService.startJob(id!).subscribe({
+      next: () => {
+        this.toastService.showSuccess('Job queued');
+      },
+      error: e => {
+        this.toastService.fromError(e);
+      }
+    });
   }
 
 }

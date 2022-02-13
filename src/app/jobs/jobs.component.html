@@ -18,7 +18,7 @@
             <div class="col-12 col-sm-6 d-flex justify-content-end">
               <button mat-icon-button routerLink="/jobs/{{j.id}}/videos"> <mat-icon>visibility</mat-icon></button>
               <button mat-icon-button routerLink="/jobs/{{j.id}}"> <mat-icon>edit</mat-icon></button>
-              <button color="accent" (click)="startJob(j.id, poz)" mat-icon-button> <mat-icon>not_started</mat-icon></button>
+              <button color="accent" (click)="startJob(j.id)" mat-icon-button> <mat-icon>not_started</mat-icon></button>
               <button (click)="deletejob(j.id, poz)" mat-icon-button> <mat-icon>delete</mat-icon></button>
             </div>
           </div>
