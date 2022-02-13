@@ -8,6 +8,16 @@
     <mat-card-content>
       <p *ngIf="v.status === statuses.Error" class="text-warn">{{v.error}}</p>
       <video class="w-100 h-100" [src]="v.finalFileSasUrl" *ngIf="v.status === statuses.Generated || v.status === statuses.Uploading || v.status === statuses.Uploaded"></video>
+      <div fxLayout="row" class="w-100" fxLayoutAlign="space-between center">
+        <mat-icon color="primary">{{v.createDone ? 'done' : 'clear'}}</mat-icon>
+        <mat-icon color="primary">{{v.contentDone ? 'done' : 'clear'}}</mat-icon>
+        <mat-icon *ngIf="v.contentTranslateFromLanguage != null" color="primary">{{v.translationDone ? 'done' : 'clear'}}</mat-icon>
+        <mat-icon color="primary">{{v.videoBackgroundDone ? 'done' : 'clear'}}</mat-icon>
+        <mat-icon color="primary">{{v.audioBackgroundDone ? 'done' : 'clear'}}</mat-icon>
+        <mat-icon color="primary">{{v.speechDone ? 'done' : 'clear'}}</mat-icon>
+        <mat-icon color="primary">{{v.stitchDone ? 'done' : 'clear'}}</mat-icon>
+        <mat-icon color="primary">{{v.uploadDone ? 'done' : 'clear'}}</mat-icon>
+      </div>
     </mat-card-content>
     <mat-card-actions>
       <button color="warn" mat-icon-button (click)="deleteVideo(v.id!, poz)">

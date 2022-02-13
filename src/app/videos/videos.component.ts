@@ -33,9 +33,13 @@ export class VideosComponent implements OnInit, OnDestroy {
           this.signalrSub = this.hubService.subscribe('videoUpdate');
           this._destroy.push(this.signalrSub.observable.subscribe(x => {
             const vid: Video = x;
-            const foundVid = this.videos?.find(x => x.id === vid.id);
+            let foundVid = this.videos?.find(x => x.id === vid.id);
             if (foundVid == null) {
-              return;
+              foundVid = {
+                id: vid.id,
+                jobId: vid.jobId,
+                name: vid.name
+              };
             }
             foundVid.status = vid.status;
             foundVid.error = vid.error;
