@@ -15,7 +15,7 @@ import { ToastService } from '../shared/toast/services/toast.service';
 })
 export class VideosComponent implements OnInit, OnDestroy {
   private jobId: string | undefined;
-  videos: Video[] | undefined;
+  videos: Video[]  = [];
   private _destroy: Subscription[] = [];
   private signalrSub: SignalrObservableWrapper<any> | undefined;
   statuses = VideoStatus;
@@ -39,7 +39,7 @@ export class VideosComponent implements OnInit, OnDestroy {
                 jobId: vid.jobId,
                 name: vid.name
               };
-              this.videos?.push(foundVid);
+              this.videos = [foundVid, ...this.videos!];
             }
             foundVid.status = vid.status;
             foundVid.error = vid.error;

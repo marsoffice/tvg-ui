@@ -7,8 +7,12 @@
     </mat-card-header>
     <mat-card-content>
       <p *ngIf="v.status === statuses.Error" class="text-warn">{{v.error}}</p>
-      <video controls class="w-100 h-100" [src]="v.finalFileSasUrl" *ngIf="v.status === statuses.Generated || v.status === statuses.Uploading || v.status === statuses.Uploaded"></video>
-      <div fxLayout="row" class="w-100" fxLayoutAlign="space-between center">
+      <mat-expansion-panel #p controls class="w-100" *ngIf="v.status === statuses.Generated || v.status === statuses.Uploading || v.status === statuses.Uploaded">
+        <mat-expansion-panel-header>Video</mat-expansion-panel-header>
+        <video *ngIf="p.expanded" controls class="w-100 h-100" [src]="v.finalFileSasUrl"></video>
+      </mat-expansion-panel>
+      <br />
+      <div fxLayout="row" class="w-100" fxLayoutAlign="end center">
         <mat-icon color="primary">{{v.createDone ? 'done' : 'clear'}}</mat-icon>
         <mat-icon color="primary">{{v.contentDone ? 'done' : 'clear'}}</mat-icon>
         <mat-icon *ngIf="v.contentTranslateFromLanguage != null" color="primary">{{v.translationDone ? 'done' : 'clear'}}</mat-icon>
