@@ -7,7 +7,7 @@
     </mat-card-header>
     <mat-card-content>
       <p *ngIf="v.status === statuses.Error" class="text-warn">{{v.error}}</p>
-      <video class="w-100 h-100" [src]="v.finalFileSasUrl" *ngIf="v.status === statuses.Generated || v.status === statuses.Uploading || v.status === statuses.Uploaded"></video>
+      <video controls class="w-100 h-100" [src]="v.finalFileSasUrl" *ngIf="v.status === statuses.Generated || v.status === statuses.Uploading || v.status === statuses.Uploaded"></video>
       <div fxLayout="row" class="w-100" fxLayoutAlign="space-between center">
         <mat-icon color="primary">{{v.createDone ? 'done' : 'clear'}}</mat-icon>
         <mat-icon color="primary">{{v.contentDone ? 'done' : 'clear'}}</mat-icon>
