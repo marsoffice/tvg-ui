@@ -2,7 +2,7 @@
   <mat-card *ngFor="let v of videos; let poz = index">
     <mat-card-header>
       <mat-card-title>{{v.id}}</mat-card-title>
-      <mat-card-subtitle>{{v.updatedDate | date:'medium'}}</mat-card-subtitle>
+      <mat-card-subtitle>{{(v.updatedDate || v.createdDate) | date:'medium'}}</mat-card-subtitle>
       <mat-card-subtitle>{{statuses[v.status!]}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
