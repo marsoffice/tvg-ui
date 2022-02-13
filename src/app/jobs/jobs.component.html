@@ -2,8 +2,7 @@
   <h2 class="mat-title-1">Jobs</h2>
   <div class="row g-0">
     <div class="col-12">
-      <mat-accordion *ngFor="let j of jobs; let poz=index;" >
-        <mat-expansion-panel  [style.background]="j.disabled ? '#ccc' : '#fff'" >
+        <mat-expansion-panel *ngFor="let j of jobs; let poz=index;" [expanded]="true" [style.background]="j.disabled ? '#ccc' : '#fff'" >
           <mat-expansion-panel-header>
             <mat-panel-title>
            {{j.name}}
@@ -35,8 +34,6 @@
           </div>
         </div>
         </mat-expansion-panel>
-        <br>
-      </mat-accordion>
     </div>
   </div>
 <br /><br />
