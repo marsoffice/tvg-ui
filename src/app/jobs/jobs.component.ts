@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Job } from '../models/job';
 import { JobsService } from '../services/jobs.service';
 import { ToastService } from '../shared/toast/services/toast.service';
@@ -12,7 +13,7 @@ export class JobsComponent implements OnInit {
 
   jobs: Job[] = []
 
-  constructor(private jobsService: JobsService, private toastService: ToastService) { }
+  constructor(private jobsService: JobsService, private toastService: ToastService, private router: Router) { }
 
   ngOnInit(): void {
     this.jobsService.getJobs().subscribe(rez =>{
@@ -38,6 +39,7 @@ export class JobsComponent implements OnInit {
     this.jobsService.startJob(id!).subscribe({
       next: () => {
         this.toastService.showSuccess('Job queued');
+        this.router.navigate(['jobs/' + id + '/videos']);
       },
       error: e => {
         this.toastService.fromError(e);
