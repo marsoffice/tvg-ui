@@ -48,6 +48,7 @@ export interface Job {
   textBoxColor?: string; //color
   textBoxOpacity?: number;
   texBoxBorderColor?: string; //color
+  textColor?: string;
 
   // 7. Upload
   disableAutoUpload?: boolean;

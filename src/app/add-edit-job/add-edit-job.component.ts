@@ -45,7 +45,9 @@ export class AddEditJobComponent implements OnInit {
     textFontSize: new FormControl(),
     textBoxColor: new FormControl(),
     textBoxOpacity: new FormControl(),
-    texBoxBorderColor: new FormControl(),
+    textBoxBorderColor: new FormControl(),
+    textColor: new FormControl(),
+
     // 7. Upload
     disableAutoUpload: new FormControl(),
     postDescription: new FormControl(),

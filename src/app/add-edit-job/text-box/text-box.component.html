@@ -10,13 +10,13 @@
               <mat-option *ngFor="let text of textsFontFamily" [value]="text">{{text}}</mat-option>
             </mat-select>
           </mat-form-field>
-          
 
-         
+
+
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
-  
+
       <mat-step>
         <ng-template matStepLabel>Text Font Size</ng-template>
         <ng-template matStepContent>
@@ -28,7 +28,19 @@
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
-  
+
+      <mat-step>
+        <ng-template matStepLabel>Text Color</ng-template>
+        <ng-template matStepContent>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Text Color</mat-label>
+            <input type="color" formControlName="textColor" matInput placeholder="" value="" />
+          </mat-form-field>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
+
       <mat-step>
         <ng-template matStepLabel>Text Box Color</ng-template>
         <ng-template matStepContent>
@@ -53,15 +65,15 @@
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
-  
+
       <mat-step>
-        <ng-template matStepLabel>Tex Box Border Color</ng-template>
+        <ng-template matStepLabel>Text Box Border Color</ng-template>
         <ng-template matStepContent>
           <mat-form-field class="w-100" appearance="fill">
-            <mat-label>Tex Box Border Color</mat-label>
-            <input type="color" formControlName="texBoxBorderColor" matInput placeholder="" value="" />
+            <mat-label>Text Box Border Color</mat-label>
+            <input type="color" formControlName="textBoxBorderColor" matInput placeholder="" value="" />
           </mat-form-field>
-          
+
           <button mat-button (click)="stepper.reset()">Reset</button>
           <button mat-button matStepperPrevious>Back</button>
         </ng-template>
