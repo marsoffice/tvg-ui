@@ -17,9 +17,11 @@ export class TestingComponent implements OnInit {
     this.srv.test(this.cmd).subscribe({
       next: x => {
         console.log(x);
+        alert("Response: " + JSON.stringify(x));
       },
       error: e => {
         console.error(e);
+        alert("Error: " + JSON.stringify(e));
       }
     });
   }
