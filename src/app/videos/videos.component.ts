@@ -115,6 +115,6 @@ export class VideosComponent implements OnInit, OnDestroy {
         return 1;
       }
       return 0;
-    });
+    }).reverse();
   }
 }
