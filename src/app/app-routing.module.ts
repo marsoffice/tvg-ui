@@ -7,7 +7,6 @@ import { HomeComponent } from './home/home.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { LoggedOutComponent } from './logged-out/logged-out.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { TestingComponent } from './testing/testing.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { VideosComponent } from './videos/videos.component';
 
@@ -15,11 +14,6 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    canActivate: [MsalGuard],
-  },
-  {
-    path: 'testing',
-    component: TestingComponent,
     canActivate: [MsalGuard],
   },
   {

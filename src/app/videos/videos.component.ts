@@ -17,7 +17,7 @@ export class VideosComponent implements OnInit, OnDestroy {
   private jobId: string | undefined;
   videos: Video[]  = [];
   private _destroy: Subscription[] = [];
-  private signalrSub: SignalrObservableWrapper<any> | undefined;
+  private signalrSub: SignalrObservableWrapper<Video> | undefined;
   statuses = VideoStatus;
 
   constructor(private route: ActivatedRoute, private videosService: VideosService,
@@ -30,34 +30,22 @@ export class VideosComponent implements OnInit, OnDestroy {
       this.videosService.getJobVideos(this.jobId!).subscribe({
         next: v => {
           this.videos = v;
+          this.sortVideos();
           this.signalrSub = this.hubService.subscribe<Video>('videoUpdate');
           this._destroy.push(this.signalrSub.observable.subscribe(vid => {
+            if (vid.jobId !== this.jobId) {
+              return;
+            }
             let foundVid = this.videos?.find(x => x.id === vid.id && x.jobId === vid.jobId);
             if (foundVid == null) {
-              foundVid = {
-                id: vid.id,
-                jobId: vid.jobId,
-                name: vid.name
-              };
-              this.videos = [foundVid, ...this.videos!];
+              foundVid = vid;
+              this.videos = [foundVid, ...this.videos];
+              return;
             }
-            foundVid.status = vid.status;
-            foundVid.error = vid.error;
 
-            foundVid.contentDone = vid.contentDone;
-            foundVid.createDone = vid.createDone;
-            foundVid.speechDone = vid.speechDone;
-            foundVid.translationDone = vid.translationDone;
-            foundVid.contentTranslateFromLanguage = vid.contentTranslateFromLanguage;
-            foundVid.contentTranslateToLanguage = vid.contentTranslateToLanguage;
-            foundVid.updatedDate = vid.updatedDate;
-            foundVid.stitchDone = vid.stitchDone;
-            foundVid.finalFileSasUrl = vid.finalFileSasUrl;
-            foundVid.audioBackgroundDone = vid.audioBackgroundDone;
-            foundVid.videoBackgroundDone = vid.videoBackgroundDone;
-            if (this.videos != null) {
-              this.videos = [...this.videos!];
-            }
+            foundVid = Object.assign(foundVid, vid);
+            this.sortVideos();
+            this.videos = [...this.videos];
           }));
         },
         error: e => {
@@ -104,6 +92,29 @@ export class VideosComponent implements OnInit, OnDestroy {
           this.toastService.fromError(e);
         }
       });
+    });
+  }
+
+  private sortVideos() {
+    this.videos = this.videos.sort((a, b) => {
+      const dateA = a?.createdDate || a?.updatedDate;
+      const dateB = b?.createdDate || b?.updatedDate;
+      if (dateA == null && dateB == null) {
+        return 0;
+      }
+      if (dateA == null && dateB != null) {
+        return -1;
+      }
+      if (dateA != null && dateB == null) {
+        return 1;
+      }
+      if (dateA! < dateB!) {
+        return -1;
+      }
+      if (dateA! > dateB!) {
+        return 1;
+      }
+      return 0;
     });
   }
 }
