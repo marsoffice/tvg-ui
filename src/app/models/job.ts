@@ -40,7 +40,7 @@ export interface Job {
   audioBackgroundVolumeInPercent?: number;
 
   // 5. Video Background
-  videoBackgroundResolution?: string; // string
+  videoBackgroundResolution?: string; // string // select - allResolutions editor service
 
   // 6. Text Box
   textFontFamily?: string; // select - fontTypes editor service

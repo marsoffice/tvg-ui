@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { EditorService } from 'src/app/services/editor.service';
 
 @Component({
   selector: 'app-video-background',
@@ -8,9 +9,16 @@ import { FormGroup } from '@angular/forms';
 })
 export class VideoBackgroundComponent implements OnInit {
   @Input() job!: FormGroup;
-  constructor() { }
+
+  videosBackgroundResolution: string[]= []
+
+  constructor(private editorService: EditorService) { }
 
   ngOnInit(): void {
+    this.editorService.getAllResolutions().subscribe(rez =>{
+      this.videosBackgroundResolution = rez 
+    })
+
   }
 
 }

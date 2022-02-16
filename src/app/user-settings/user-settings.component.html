@@ -1,11 +1,13 @@
 
   <form [formGroup]="settingsForm" class="container" style="width: 100%; height: 100%;">
+    <br>
     <h2 class="mat-title-1">Settings</h2>
     <div class="row g-0">
         <div class="col-12" >
           <mat-checkbox formControlName="disableEmailNotifications" class="example-margin">Disable Email Notifications</mat-checkbox>
         </div>
     </div>
+    <br>
 
     <div class="row g-0">
       <div class="col-12">
@@ -17,9 +19,9 @@
               </mat-panel-title>
             </mat-expansion-panel-header>
            <div *ngFor="let t of settingsForm.controls.tikTokAccounts.value; let poz= index" class="row mb-2" >
-             <div  class="col-12 col-sm-3"> <mat-card>{{t.username}}</mat-card></div>
-             <div class="col-12 col-sm-3"> <mat-card>{{t.email}}</mat-card></div>
-             <div  class="col-12 col-sm-3"> <mat-card>{{t.code}}</mat-card></div>
+             <div  class="col-12 col-sm-3 mb-2"> <mat-card>{{t.username}}</mat-card></div>
+             <div class="col-12 col-sm-3 mb-2"> <mat-card>{{t.email}}</mat-card></div>
+             <div  class="col-12 col-sm-3 mb-2"> <mat-card>{{t.code}}</mat-card></div>
              <div class="col-12 col-sm-3 d-flex justify-content-end">
                 <button (click)="clickdelete(poz)" mat-mini-fab color="accent">
                   <mat-icon>delete</mat-icon>

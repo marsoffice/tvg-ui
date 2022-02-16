@@ -39,7 +39,7 @@ export class AddEditJobComponent implements OnInit {
     audioBackgroundQuality: new FormControl(),
     audioBackgroundVolumeInPercent: new FormControl(),
     // 5. Video Background
-    videoBackgroundResolution: new FormControl(),
+    videoBackgroundResolution: new FormControl(), 
     // 6. Text Box
     textFontFamily: new FormControl(),
     textFontSize: new FormControl(),

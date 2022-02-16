@@ -3,11 +3,13 @@
       <mat-step>
         <ng-template matStepLabel>Video Background Resolution</ng-template>
         <ng-template matStepContent>
+
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Video Background Resolution</mat-label>
-            <input formControlName="videoBackgroundResolution" matInput placeholder="" value="" />
+            <mat-select formControlName="videoBackgroundResolution" disableRipple>
+              <mat-option *ngFor="let video of videosBackgroundResolution" [value]="video">{{video}}</mat-option>
+            </mat-select>
           </mat-form-field>
-          
           <button mat-button (click)="stepper.reset()">Reset</button>
           <button mat-button matStepperPrevious>Back</button>
         </ng-template>
