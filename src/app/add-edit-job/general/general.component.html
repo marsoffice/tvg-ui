@@ -13,15 +13,15 @@
             <button mat-button matStepperNext>Next</button>
           </ng-template>
         </mat-step>
-    
+
         <mat-step>
-          <ng-template matStepLabel>Preferred Duration In Seconds</ng-template>
+          <ng-template matStepLabel>Final File Duration In Millis</ng-template>
           <ng-template matStepContent>
             <mat-form-field class="w-100" appearance="fill">
-              <mat-label>Preferred Duration In Seconds</mat-label>
+              <mat-label>Final File Duration In Millis</mat-label>
               <input
                 type="number"
-                formControlName="preferredDurationInSeconds"
+                formControlName="finalFileDurationInMillis"
                 matInput
                 placeholder=""
                 value=""
@@ -31,7 +31,19 @@
             <button mat-button matStepperNext>Next</button>
           </ng-template>
         </mat-step>
-    
+
+        <mat-step>
+          <ng-template matStepLabel>Trim Gracefully To Max Duration</ng-template>
+          <ng-template matStepContent>
+            <mat-form-field class="w-100" appearance="fill">
+              <mat-label>Trim Gracefully To Max Duration</mat-label>
+              <mat-checkbox formControlName="trimGracefullyToMaxDuration" class="example-margin">Trim Gracefully To Max Duration</mat-checkbox>
+            </mat-form-field>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </ng-template>
+        </mat-step>
+
         <mat-step>
           <ng-template matStepLabel>Disabled</ng-template>
           <ng-template matStepContent>
@@ -41,12 +53,12 @@
             <button mat-button matStepperNext>Next</button>
           </ng-template>
         </mat-step>
-    
+
         <mat-step>
           <ng-template matStepLabel>Cron</ng-template>
           <ng-template matStepContent>
             <app-cron [disabledRecurrenceTypes]="disabledRectTypes" formControlName="cron"></app-cron>
-            
+
             <button mat-button (click)="stepper.reset()">Reset</button>
             <button mat-button matStepperPrevious>Back</button>
           </ng-template>

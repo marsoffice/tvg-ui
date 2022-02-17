@@ -12,7 +12,8 @@ export class AddEditJobComponent implements OnInit {
   job = new FormGroup({
     // General
     name: new FormControl('', [Validators.required]), // required
-    preferredDurationInSeconds: new FormControl(),
+    finalFileDurationInMillis: new FormControl(),
+    trimGracefullyToMaxDuration: new FormControl(),
     disabled: new FormControl(),
     cron: new FormControl('', [Validators.required]), // required
     // 2. Content
@@ -39,7 +40,7 @@ export class AddEditJobComponent implements OnInit {
     audioBackgroundQuality: new FormControl(),
     audioBackgroundVolumeInPercent: new FormControl(),
     // 5. Video Background
-    videoBackgroundResolution: new FormControl(), 
+    videoBackgroundResolution: new FormControl(),
     // 6. Text Box
     textFontFamily: new FormControl(),
     textFontSize: new FormControl(),

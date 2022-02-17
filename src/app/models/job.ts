@@ -5,7 +5,8 @@ export interface Job {
 
   // General
   name: string; // required
-  preferredDurationInSeconds?: number;
+  finalFileDurationInMillis?: number;
+  trimGracefullyToMaxDuration?: boolean;
   disabled?: boolean;
   cron: string; // required
 
