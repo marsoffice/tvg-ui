@@ -9,7 +9,7 @@
       <p *ngIf="v.status === statuses.Error" class="text-warn">{{v.error}}</p>
       <mat-expansion-panel #p controls class="w-100" *ngIf="v.status === statuses.Generated || v.status === statuses.Uploading || v.status === statuses.Uploaded">
         <mat-expansion-panel-header>Video</mat-expansion-panel-header>
-        <video *ngIf="p.expanded" controls class="w-100 h-100" [src]="v.finalFileSasUrl"></video>
+        <video *ngIf="p.expanded" controls class="w-100 h-100 video" [src]="v.finalFileSasUrl"></video>
         <br />
         <mat-form-field appearance="outline" class="w-100">
           <mat-label>URL</mat-label>
