@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserSettingsService } from '../services/user-settings.service';
 import { ToastService } from '../shared/toast/services/toast.service';
 
@@ -15,11 +15,11 @@ export class UserSettingsComponent implements OnInit {
     tikTokAccounts: new FormControl([]),
     disableEmailNotifications: new FormControl(false)
   })
-  
+
   addTikTokAccount = new FormGroup({
-    email: new FormControl(''),
-    username: new FormControl(''),
-    code: new FormControl('')
+    email: new FormControl(undefined, [Validators.required]),
+    username: new FormControl(undefined, [Validators.required]),
+    code: new FormControl(undefined, [Validators.required]),
   })
 
 
@@ -42,7 +42,7 @@ export class UserSettingsComponent implements OnInit {
         this.toast.fromError(e);
       }
     })
-    
+
 
   }
 

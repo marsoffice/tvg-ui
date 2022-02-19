@@ -1,40 +1,54 @@
-<div class="p-5" fxLayout="column" fxLayoutGap="1rem">
-  <mat-card *ngFor="let v of videos; let poz = index">
-    <mat-card-header>
-      <mat-card-title>{{v.id}}</mat-card-title>
-      <mat-card-subtitle>{{(v.updatedDate || v.createdDate) | date:'medium'}}</mat-card-subtitle>
-      <mat-card-subtitle>{{statuses[v.status!]}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p *ngIf="v.status === statuses.Error" class="text-warn">{{v.error}}</p>
-      <mat-expansion-panel #p controls class="w-100" *ngIf="v.status === statuses.Generated || v.status === statuses.Uploading || v.status === statuses.Uploaded">
-        <mat-expansion-panel-header>Video</mat-expansion-panel-header>
-        <video *ngIf="p.expanded" controls class="w-100 h-100 video" [src]="v.finalFileSasUrl"></video>
-        <br />
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-label>URL</mat-label>
-          <input readonly [value]="v.finalFileSasUrl" matInput type="text" />
-        </mat-form-field>
-      </mat-expansion-panel>
-      <br />
-      <div fxLayout="row" class="w-100" fxLayoutAlign="end center">
-        <mat-icon color="primary">{{v.createDone ? 'done' : 'clear'}}</mat-icon>
-        <mat-icon color="primary">{{v.contentDone ? 'done' : 'clear'}}</mat-icon>
-        <mat-icon *ngIf="v.contentTranslateFromLanguage != null" color="primary">{{v.translationDone ? 'done' : 'clear'}}</mat-icon>
-        <mat-icon color="primary">{{v.videoBackgroundDone ? 'done' : 'clear'}}</mat-icon>
-        <mat-icon color="primary">{{v.audioBackgroundDone ? 'done' : 'clear'}}</mat-icon>
-        <mat-icon color="primary">{{v.speechDone ? 'done' : 'clear'}}</mat-icon>
-        <mat-icon color="primary">{{v.stitchDone ? 'done' : 'clear'}}</mat-icon>
-        <mat-icon color="primary">{{v.uploadDone ? 'done' : 'clear'}}</mat-icon>
-      </div>
-    </mat-card-content>
-    <mat-card-actions>
-      <button color="warn" mat-icon-button (click)="deleteVideo(v.id!, poz)">
-        <mat-icon>delete</mat-icon>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 d-flex align-items-center">
+      <button color="accent" routerLink="/jobs" mat-icon-button>
+        <mat-icon>chevron_left</mat-icon>
       </button>
-      <button *ngIf="v.status === statuses.Generated" color="accent" mat-icon-button (click)="uploadVideo(v.id!)">
-        <mat-icon>upload</mat-icon>
-      </button>
-    </mat-card-actions>
-  </mat-card>
+      <h2 class="m-0 p-0">Videos for job {{jobId}}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-3" *ngFor="let v of videos; let poz = index">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{v.id}}</mat-card-title>
+          <mat-card-subtitle>{{(v.updatedDate || v.createdDate) | date:'medium'}}</mat-card-subtitle>
+          <mat-card-subtitle>{{statuses[v.status!]}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p *ngIf="v.status === statuses.Error" class="text-warn">{{v.error}}</p>
+          <mat-expansion-panel #p controls class="w-100"
+            *ngIf="v.status === statuses.Generated || v.status === statuses.Uploading || v.status === statuses.Uploaded">
+            <mat-expansion-panel-header>Video</mat-expansion-panel-header>
+            <video *ngIf="p.expanded" controls class="w-100 h-100 video" [src]="v.finalFileSasUrl"></video>
+            <br />
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>URL</mat-label>
+              <input readonly [value]="v.finalFileSasUrl" matInput type="text" />
+            </mat-form-field>
+          </mat-expansion-panel>
+          <br />
+          <div fxLayout="row" class="w-100" fxLayoutAlign="end center">
+            <mat-icon color="primary">{{v.createDone ? 'done' : 'clear'}}</mat-icon>
+            <mat-icon color="primary">{{v.contentDone ? 'done' : 'clear'}}</mat-icon>
+            <mat-icon *ngIf="v.contentTranslateFromLanguage != null" color="primary">{{v.translationDone ? 'done' : 'clear'}}</mat-icon>
+            <mat-icon color="primary">{{v.videoBackgroundDone ? 'done' : 'clear'}}</mat-icon>
+            <mat-icon color="primary">{{v.audioBackgroundDone ? 'done' : 'clear'}}</mat-icon>
+            <mat-icon color="primary">{{v.speechDone ? 'done' : 'clear'}}</mat-icon>
+            <mat-icon color="primary">{{v.stitchDone ? 'done' : 'clear'}}</mat-icon>
+            <mat-icon color="primary">{{v.uploadDone ? 'done' : 'clear'}}</mat-icon>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button color="warn" mat-icon-button (click)="deleteVideo(v.id!, poz)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button *ngIf="v.status === statuses.Generated" color="accent" mat-icon-button (click)="uploadVideo(v.id!)">
+            <mat-icon>upload</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
 </div>

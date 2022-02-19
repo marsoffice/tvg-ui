@@ -3,7 +3,7 @@
     <ng-template matStepLabel>General</ng-template>
     <ng-template matStepContent>
       <app-general [job]="job"></app-general>
-      
+
     <div>
       <button mat-button matStepperNext>Next</button>
     </div>
@@ -14,7 +14,7 @@
     <ng-template matStepLabel>Content</ng-template>
     <ng-template matStepContent>
       <app-content [job]="job"></app-content>
-      
+
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button matStepperNext>Next</button>
@@ -38,7 +38,7 @@
     <ng-template matStepLabel>Audio Background</ng-template>
     <ng-template matStepContent>
       <app-audio-background [job]="job"></app-audio-background>
-      
+
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button matStepperNext>Next</button>
@@ -50,7 +50,7 @@
     <ng-template matStepLabel>Video Background</ng-template>
     <ng-template matStepContent>
       <app-video-background [job]="job"></app-video-background>
-      
+
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button matStepperNext>Next</button>
@@ -62,7 +62,7 @@
     <ng-template matStepLabel>Text Box</ng-template>
     <ng-template matStepContent>
       <app-text-box [job]="job"></app-text-box>
-      
+
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button matStepperNext>Next</button>
@@ -77,7 +77,7 @@
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
-        <button color="accent" (click)="clickaddjob()" mat-raised-button matStepperNext>Save</button>
+        <button [disabled]="job.invalid" color="accent" (click)="clickaddjob()" mat-raised-button matStepperNext>Save</button>
       </div>
     </ng-template>
   </mat-step>

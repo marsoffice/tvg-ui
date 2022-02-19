@@ -14,7 +14,7 @@ import { ToastService } from '../shared/toast/services/toast.service';
   styleUrls: ['./videos.component.scss']
 })
 export class VideosComponent implements OnInit, OnDestroy {
-  private jobId: string | undefined;
+  jobId: string | undefined;
   videos: Video[]  = [];
   private _destroy: Subscription[] = [];
   private signalrSub: SignalrObservableWrapper<Video> | undefined;

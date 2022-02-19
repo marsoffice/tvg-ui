@@ -1,86 +1,79 @@
-
-  <form [formGroup]="settingsForm" class="container" style="width: 100%; height: 100%;">
-    <br>
-    <h2 class="mat-title-1">Settings</h2>
-    <div class="row g-0">
-        <div class="col-12" >
-          <mat-checkbox formControlName="disableEmailNotifications" class="example-margin">Disable Email Notifications</mat-checkbox>
-        </div>
+<form [formGroup]="settingsForm" class="container" style="width: 100%; height: 100%;">
+  <br>
+  <h2 class="mat-title-1">Settings</h2>
+  <div class="row g-0">
+    <div class="col-12">
+      <mat-checkbox formControlName="disableEmailNotifications" class="example-margin">Disable Email Notifications</mat-checkbox>
     </div>
-    <br>
+  </div>
+  <br>
 
-    <div class="row g-0">
-      <div class="col-12">
-        <mat-accordion>
-          <mat-expansion-panel [(expanded)]="panelOpenState" >
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                TikTok Accounts
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-           <div *ngFor="let t of settingsForm.controls.tikTokAccounts.value; let poz= index" class="row mb-2" >
-             <div  class="col-12 col-sm-3 mb-2"> <mat-card>{{t.username}}</mat-card></div>
-             <div class="col-12 col-sm-3 mb-2"> <mat-card>{{t.email}}</mat-card></div>
-             <div  class="col-12 col-sm-3 mb-2"> <mat-card>{{t.code}}</mat-card></div>
-             <div class="col-12 col-sm-3 d-flex justify-content-end">
-                <button (click)="clickdelete(poz)" mat-mini-fab color="accent">
-                  <mat-icon>delete</mat-icon>
-                </button>
-             </div>
-           </div>
-          </mat-expansion-panel>
-        </mat-accordion>
-      </div>
-
-    </div>
-<br /><br />
-    <form [formGroup]="addTikTokAccount" class="mb-2">
-    <div class="row">
-  
-     
-
-
-            <div class="col-12 col-sm-4">
-              <mat-form-field class="w-100" appearance="fill">
-                <mat-label>User Name</mat-label>
-                <input formControlName="username" matInput placeholder="" value="">
-              </mat-form-field>
+  <div class="row g-0">
+    <div class="col-12">
+      <mat-accordion>
+        <mat-expansion-panel [(expanded)]="panelOpenState">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              TikTok Accounts
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div *ngFor="let t of settingsForm.controls.tikTokAccounts.value; let poz= index" class="row mb-2">
+            <div class="col-12 col-sm-3 mb-2">
+              <mat-card>{{t.username}}</mat-card>
             </div>
-
-            <div class="col-12 col-sm-4">  
-            <mat-form-field class="w-100" appearance="fill">
-              <mat-label>Email</mat-label>
-              <input formControlName="email" matInput placeholder="" value="">
-            </mat-form-field>
+            <div class="col-12 col-sm-3 mb-2">
+              <mat-card>{{t.email}}</mat-card>
             </div>
-
-              <div class="col-12 col-sm-4"> 
-            <mat-form-field class="w-100" appearance="fill">
-              <mat-label>Code</mat-label>
-              <input formControlName="code" matInput placeholder="" value="">
-            </mat-form-field>
+            <div class="col-12 col-sm-3 mb-2">
+              <mat-card>{{t.code}}</mat-card>
+            </div>
+            <div class="col-12 col-sm-3 d-flex justify-content-end">
+              <button (click)="clickdelete(poz)" mat-mini-fab color="accent">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
           </div>
+          <br />
+          <h3>Add TikTok Account</h3>
+          <form [formGroup]="addTikTokAccount" class="mb-2">
+            <div class="row">
+              <div class="col-12 col-sm-4">
+                <mat-form-field class="w-100" appearance="fill">
+                  <mat-label>User Name</mat-label>
+                  <input formControlName="username" matInput placeholder="" value="">
+                </mat-form-field>
+              </div>
+
+              <div class="col-12 col-sm-4">
+                <mat-form-field class="w-100" appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input formControlName="email" matInput placeholder="" value="">
+                </mat-form-field>
+              </div>
+
+              <div class="col-12 col-sm-4">
+                <mat-form-field class="w-100" appearance="fill">
+                  <mat-label>Code</mat-label>
+                  <input formControlName="code" matInput placeholder="" value="">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="w-100 d-flex justify-content-end">
+              <button [disabled]="addTikTokAccount.invalid" (click)="clickPush()" mat-mini-fab color="accent">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+          </form>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
-    <div class="w-100 d-flex justify-content-end"> 
-        <button (click)="clickPush()" mat-mini-fab color="accent">
-            <mat-icon>add</mat-icon>
-       </button>
-     </div>
+
+  </div>
+  <br />
+  <div class="row g-0">
+    <div class="col-12 d-flex justify-content-center">
+      <button (click)="clickSaveUserSetting()" mat-raised-button color="primary">Save</button>
+    </div>
+  </div>
+
 </form>
-
-    <div class="row g-0">
-      <div class="col-12 d-flex justify-content-center">
-          <button (click)="clickSaveUserSetting()" mat-raised-button color="primary">Save</button>
-      </div>
-    </div>
-
-  </form>
-
-   
-
-
-
-
-
-
-
