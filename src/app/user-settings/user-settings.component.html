@@ -32,37 +32,12 @@
               </button>
             </div>
           </div>
-          <br />
-          <h3>Add TikTok Account</h3>
-          <form [formGroup]="addTikTokAccount" class="mb-2">
-            <div class="row">
-              <div class="col-12 col-sm-4">
-                <mat-form-field class="w-100" appearance="fill">
-                  <mat-label>User Name</mat-label>
-                  <input formControlName="username" matInput placeholder="" value="">
-                </mat-form-field>
-              </div>
-
-              <div class="col-12 col-sm-4">
-                <mat-form-field class="w-100" appearance="fill">
-                  <mat-label>Email</mat-label>
-                  <input formControlName="email" matInput placeholder="" value="">
-                </mat-form-field>
-              </div>
-
-              <div class="col-12 col-sm-4">
-                <mat-form-field class="w-100" appearance="fill">
-                  <mat-label>Code</mat-label>
-                  <input formControlName="code" matInput placeholder="" value="">
-                </mat-form-field>
-              </div>
-            </div>
-            <div class="w-100 d-flex justify-content-end">
-              <button [disabled]="addTikTokAccount.invalid" (click)="clickPush()" mat-mini-fab color="accent">
-                <mat-icon>add</mat-icon>
-              </button>
-            </div>
-          </form>
+          <div class="w-100 d-flex justify-content-center">
+            <button color="accent" mat-raised-button (click)="redirectToTikTok()">
+              <mat-icon>add</mat-icon>
+              <span>Add TikTok Account</span>
+            </button>
+          </div>
         </mat-expansion-panel>
       </mat-accordion>
     </div>

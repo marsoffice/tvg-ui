@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 import { UserSettingsService } from '../services/user-settings.service';
 import { ToastService } from '../shared/toast/services/toast.service';
 
@@ -42,10 +43,7 @@ export class UserSettingsComponent implements OnInit {
         this.toast.fromError(e);
       }
     })
-
-
   }
-
 
   clickPush(){
     const list = this.settingsForm.controls.tikTokAccounts.value;
@@ -59,5 +57,17 @@ export class UserSettingsComponent implements OnInit {
     list.splice(poz, 1);
     this.settingsForm.controls.tikTokAccounts.setValue(list);
 
+  }
+
+  redirectToTikTok() {
+    const csrfState = Math.random().toString(36).substring(2);
+    let url = 'https://open-api.tiktok.com/platform/oauth/connect/';
+
+    url += '?client_key=' + environment.ttclientkey;
+    url += '&scope=user.info.basic,video.upload';
+    url += '&response_type=code';
+    url += '&redirect_uri=' + encodeURIComponent(window.location.origin + '/api/tiktok/callback');
+    url += '&state=' + csrfState;
+    window.open(url, '_blank');
   }
 }

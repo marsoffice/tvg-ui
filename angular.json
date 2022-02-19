@@ -102,7 +102,9 @@
             "proxyConfig": "proxy.conf.js",
             "ssl": true,
             "sslCert": "ssl/cert.crt",
-            "sslKey": "ssl/cert.key"
+            "sslKey": "ssl/cert.key",
+            "disableHostCheck": true,
+            "port": 443
           },
           "configurations": {
             "production": {
