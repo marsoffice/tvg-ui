@@ -5,6 +5,7 @@ export const environment = {
   adclientid: localenv.adclientid,
   publicvapidkey: localenv.publicvapidkey,
   toastDuration: 5000,
+  ttclientkey: localenv.ttclientkey
 };
 
 import 'zone.js/plugins/zone-error';

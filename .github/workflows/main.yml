@@ -22,6 +22,7 @@ jobs:
       adclientid: "${{ secrets.adclientid }}"
       adtenantid: "${{ secrets.adtenantid }}"
       publicvapidkey: "${{ secrets.publicvapidkey }}"
+      ttclientkey: "${{ secrets.ttclientkey }}"
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo
@@ -77,6 +78,7 @@ jobs:
       adclientid: "${{ secrets.adclientid }}"
       adtenantid: "${{ secrets.adtenantid }}"
       publicvapidkey: "${{ secrets.publicvapidkey }}"
+      ttclientkey: "${{ secrets.ttclientkey }}"
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo
