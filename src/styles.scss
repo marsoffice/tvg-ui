@@ -131,3 +131,9 @@ mat-form-field.mff-p0 {
 {
   min-width: fit-content;
 }
+
+.row, .container, .container-fluid {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+}
