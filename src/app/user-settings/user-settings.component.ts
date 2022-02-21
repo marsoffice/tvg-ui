@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { TikTokAccount } from '../models/tiktok-account';
 import { TiktokService } from '../services/tiktok.service';
 import { UserSettingsService } from '../services/user-settings.service';
+import { ConfirmationService } from '../shared/confirmation/services/confirmation.service';
 import { ToastService } from '../shared/toast/services/toast.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class UserSettingsComponent implements OnInit {
 
   tikTokAccounts: TikTokAccount[] | undefined;
 
-  constructor(private userSettingsService: UserSettingsService, private toast: ToastService, private tiktokService: TiktokService) { }
+  constructor(private userSettingsService: UserSettingsService, private toast: ToastService, private tiktokService: TiktokService,
+  private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
 
@@ -44,16 +46,22 @@ export class UserSettingsComponent implements OnInit {
       }
     });
   }
+
   deleteTikTokAccount(accountId: string, poz: number) {
-    this.tiktokService.deleteAccount(accountId).subscribe({
-      next: () => {
-        this.toast.showSuccess('Account deleted');
-        this.tikTokAccounts?.splice(poz, 1);
-      },
-      error: e => {
-        this.toast.fromError(e);
+    this.confirmationService.confirm().subscribe(x => {
+      if (!x) {
+        return;
       }
-    });
+      this.tiktokService.deleteAccount(accountId).subscribe({
+        next: () => {
+          this.toast.showSuccess('Account deleted');
+          this.tikTokAccounts?.splice(poz, 1);
+        },
+        error: e => {
+          this.toast.fromError(e);
+        }
+      });
+    })
   }
 
   redirectToTikTok() {

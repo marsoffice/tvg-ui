@@ -17,9 +17,8 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <div *ngFor="let t of tikTokAccounts; let poz = index" class="row mb-2">
-            <div class="col-12 col-sm-3 mb-2 d-flex align-items-center">
-              <img *ngIf="t.avatarUrl" [src]="t.avatarUrl" class="w-100 h-100" />
-              <mat-card>{{t.username}}</mat-card>
+            <div *ngIf="t.avatarUrl" class="col-12 col-sm-3 mb-2 d-flex align-items-center">
+              <img style="object-fit: contain" [src]="t.avatarUrl" class="w-100 h-100" />
             </div>
             <div class="col-12 col-sm-3 mb-2">
               <mat-card>{{t.name}}</mat-card>
