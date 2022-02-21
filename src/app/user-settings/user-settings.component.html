@@ -16,7 +16,7 @@
               TikTok Accounts
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <!-- <div *ngFor="let t of settingsForm.controls.tikTokAccounts.value; let poz = index" class="row mb-2">
+          <div *ngFor="let t of tikTokAccounts; let poz = index" class="row mb-2">
             <div class="col-12 col-sm-3 mb-2">
               <mat-card>{{t.username}}</mat-card>
             </div>
@@ -24,14 +24,14 @@
               <mat-card>{{t.email}}</mat-card>
             </div>
             <div class="col-12 col-sm-3 mb-2">
-              <mat-card>{{t.code | slice:0:10}}</mat-card>
+              <mat-card>{{t.authCode | slice:0:10}}</mat-card>
             </div>
             <div class="col-12 col-sm-3 d-flex justify-content-end">
-              <button (click)="clickdelete(poz)" mat-mini-fab color="accent">
+              <button (click)="deleteTikTokAccount(t.authCode, poz)" mat-mini-fab color="accent">
                 <mat-icon>delete</mat-icon>
               </button>
             </div>
-          </div> -->
+          </div>
           <div class="w-100 d-flex justify-content-center">
             <button color="accent" mat-raised-button (click)="redirectToTikTok()">
               <mat-icon>add</mat-icon>

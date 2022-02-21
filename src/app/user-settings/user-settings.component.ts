@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { OauthCallbackPayload } from '../models/oauth-callback-payload';
+import { TikTokAccount } from '../models/tiktok-account';
+import { TiktokService } from '../services/tiktok.service';
 import { UserSettingsService } from '../services/user-settings.service';
 import { ToastService } from '../shared/toast/services/toast.service';
 
@@ -18,12 +20,18 @@ export class UserSettingsComponent implements OnInit {
     disableEmailNotifications: new FormControl(false)
   });
 
-  constructor(private userSettingsService: UserSettingsService, private toast: ToastService) { }
+  tikTokAccounts: TikTokAccount[] | undefined;
+
+  constructor(private userSettingsService: UserSettingsService, private toast: ToastService, private tiktokService: TiktokService) { }
 
   ngOnInit(): void {
 
     this.userSettingsService.getUserSettings().subscribe(rez => {
       this.settingsForm.patchValue(rez);
+    });
+
+    this.tiktokService.getAccounts().subscribe(x => {
+      this.tikTokAccounts = x;
     });
 
   }
@@ -38,11 +46,16 @@ export class UserSettingsComponent implements OnInit {
       }
     });
   }
-  clickdelete(poz: number) {
-    const list = this.settingsForm.controls.tikTokAccounts.value;
-    list.splice(poz, 1);
-    this.settingsForm.controls.tikTokAccounts.setValue(list);
-
+  deleteTikTokAccount(authCode: string, poz: number) {
+    this.tiktokService.deleteAccount(authCode).subscribe({
+      next: () => {
+        this.toast.showSuccess('Account deleted');
+        this.tikTokAccounts?.splice(poz, 1);
+      },
+      error: e => {
+        this.toast.fromError(e);
+      }
+    });
   }
 
 
@@ -50,16 +63,25 @@ export class UserSettingsComponent implements OnInit {
     if (!e.data.type || e.data.type !== 'oauth-callback-payload') {
       return;
     }
-    if (!e.data.success) {
-      this.toast.showError('Did not receive any code');
-      this.popupWindow?.removeEventListener('message', this.windowMessageListener);
-      this.popupWindow = null;
-      return;
-    }
-    // TODO
-    this.toast.showSuccess('TikTok login successful');
     this.popupWindow?.removeEventListener('message', this.windowMessageListener);
     this.popupWindow = null;
+
+    if (!e.data.success) {
+      this.toast.showError('Did not receive any code');
+      return;
+    }
+    this.tiktokService.addAccount({
+      authCode: e.data.code!
+    }).subscribe({
+      next: a => {
+        this.tikTokAccounts?.push(a);
+        this.toast.showSuccess('TikTok login successful');
+      },
+      error: e => {
+        this.toast.fromError(e);
+      }
+    });
+
   };
 
   redirectToTikTok() {
