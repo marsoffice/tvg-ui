@@ -19,17 +19,19 @@ export class OauthCallbackComponent implements OnInit {
         return;
       }
 
-      this.tikTokService.addAccount({
-        authCode: qp.code
-      }).subscribe({
-        next: () => {
-          this.toast.showSuccess('TikTok account added successfully');
-          this.router.navigate([`user-settings`]);
-        },
-        error: e => {
-          this.toast.fromError(e);
-        }
-      });
+      setTimeout(() => {
+        this.tikTokService.addAccount({
+          authCode: qp.code
+        }).subscribe({
+          next: () => {
+            this.toast.showSuccess('TikTok account added successfully');
+            this.router.navigate([`user-settings`]);
+          },
+          error: e => {
+            this.toast.fromError(e);
+          }
+        });
+       }, 5000);
     });
   }
 
