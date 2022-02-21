@@ -70,7 +70,7 @@ export class UserSettingsComponent implements OnInit {
     url += '?client_key=' + environment.ttclientkey;
     url += '&scope=user.info.basic,video.upload';
     url += '&response_type=code';
-    url += '&redirect_uri=' + encodeURIComponent(window.location.origin + '/api/tiktok/callback');
+    url += '&redirect_uri=' + encodeURIComponent(window.location.origin + '/oauth/tiktok/callback');
     url += '&state=' + csrfState;
     location.href = url;
   }

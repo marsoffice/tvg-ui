@@ -39,15 +39,7 @@ module.exports = {
     target: "http://localhost:7009",
     secure: false,
   },
-  "/api/tiktok/getAccounts": {
-    target: "http://localhost:7010",
-    secure: false,
-  },
-  "/api/tiktok/deleteAccount": {
-    target: "http://localhost:7010",
-    secure: false,
-  },
-  "/api/tiktok/addAccount": {
+  "/api/tiktok": {
     target: "http://localhost:7010",
     secure: false,
   },

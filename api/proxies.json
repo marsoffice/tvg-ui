@@ -81,32 +81,12 @@
         "backend.request.headers.Authorization": "{request.headers.x-authorization}"
       }
     },
-    "tiktok_getAccounts": {
+    "tiktok": {
       "debug": false,
       "matchCondition": {
-        "route": "/api/tiktok/getAccounts/{*restOfPath}"
+        "route": "/api/tiktok/{*restOfPath}"
       },
-      "backendUri": "%tiktok_url%/api/tiktok/getAccounts/{restOfPath}",
-      "requestOverrides": {
-        "backend.request.headers.Authorization": "{request.headers.x-authorization}"
-      }
-    },
-    "tiktok_deleteAccount": {
-      "debug": false,
-      "matchCondition": {
-        "route": "/api/tiktok/deleteAccount/{*restOfPath}"
-      },
-      "backendUri": "%tiktok_url%/api/tiktok/deleteAccount/{restOfPath}",
-      "requestOverrides": {
-        "backend.request.headers.Authorization": "{request.headers.x-authorization}"
-      }
-    },
-    "tiktok_addAccount": {
-      "debug": false,
-      "matchCondition": {
-        "route": "/api/tiktok/addAccount/{*restOfPath}"
-      },
-      "backendUri": "%tiktok_url%/api/tiktok/addAccount/{restOfPath}",
+      "backendUri": "%tiktok_url%/api/tiktok/{restOfPath}",
       "requestOverrides": {
         "backend.request.headers.Authorization": "{request.headers.x-authorization}"
       }
