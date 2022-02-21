@@ -50,7 +50,7 @@ export class AddEditJobComponent implements OnInit {
     textColor: new FormControl(),
 
     // 7. Upload
-    disableAutoUpload: new FormControl(),
+    disabledAutoUpload: new FormControl(),
     postDescription: new FormControl(),
     editorVideoResolution: new FormControl(),
     autoUploadTikTokAccounts: new FormControl()

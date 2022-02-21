@@ -1,9 +1,9 @@
 <form [formGroup]="job">
   <mat-stepper color="accent" orientation="vertical" #stepper>
       <mat-step>
-        <ng-template matStepLabel>Disable Auto Upload</ng-template>
+        <ng-template matStepLabel>Disabled Auto Upload</ng-template>
         <ng-template matStepContent>
-          <mat-checkbox formControlName="disableAutoUpload" class="example-margin">Disable Auto Upload</mat-checkbox>
+          <mat-checkbox formControlName="disabledAutoUpload" class="example-margin">Disabled Auto Upload</mat-checkbox>
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
