@@ -60,6 +60,7 @@ import { VideoBackgroundComponent } from './add-edit-job/video-background/video-
 import { TextBoxComponent } from './add-edit-job/text-box/text-box.component';
 import { UploadSettingsComponent } from './add-edit-job/upload-settings/upload-settings.component';
 import {MatSelectModule} from '@angular/material/select';
+import { OauthCallbackComponent } from './oauth-callback/oauth-callback.component';
 
 
 
@@ -108,6 +109,7 @@ if (!environment.production) {
     VideoBackgroundComponent,
     TextBoxComponent,
     UploadSettingsComponent,
+    OauthCallbackComponent,
   ],
   imports: [
     SharedModule,

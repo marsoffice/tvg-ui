@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
+import { OauthCallbackPayload } from '../models/oauth-callback-payload';
+import { TikTokAccount } from '../models/tik-tok-account';
 import { UserSettingsService } from '../services/user-settings.service';
 import { ToastService } from '../shared/toast/services/toast.service';
 
@@ -11,30 +13,24 @@ import { ToastService } from '../shared/toast/services/toast.service';
 })
 export class UserSettingsComponent implements OnInit {
   panelOpenState = false;
+  popupWindow: Window | null = null;
 
   settingsForm = new FormGroup({
     tikTokAccounts: new FormControl([]),
     disableEmailNotifications: new FormControl(false)
-  })
-
-  addTikTokAccount = new FormGroup({
-    email: new FormControl(undefined, [Validators.required]),
-    username: new FormControl(undefined, [Validators.required]),
-    code: new FormControl(undefined, [Validators.required]),
-  })
-
+  });
 
   constructor(private userSettingsService: UserSettingsService, private toast: ToastService) { }
 
   ngOnInit(): void {
 
-    this.userSettingsService.getUserSettings().subscribe(rez =>{
+    this.userSettingsService.getUserSettings().subscribe(rez => {
       this.settingsForm.patchValue(rez);
-    })
+    });
 
   }
 
-  clickSaveUserSetting(){
+  clickSaveUserSetting() {
     this.userSettingsService.saveUserSettings(this.settingsForm.value).subscribe({
       next: rez => {
         this.toast.showSuccess('User settings saved successfully');
@@ -42,32 +38,49 @@ export class UserSettingsComponent implements OnInit {
       error: e => {
         this.toast.fromError(e);
       }
-    })
+    });
   }
-
-  clickPush(){
-    const list = this.settingsForm.controls.tikTokAccounts.value;
-    list.push(this.addTikTokAccount.value);
-    this.settingsForm.controls.tikTokAccounts.setValue(list);
-    this.panelOpenState = true;
-  }
-
-  clickdelete(poz: number){
+  clickdelete(poz: number) {
     const list = this.settingsForm.controls.tikTokAccounts.value;
     list.splice(poz, 1);
     this.settingsForm.controls.tikTokAccounts.setValue(list);
 
   }
 
+
+  windowMessageListener = (e: MessageEvent<OauthCallbackPayload>) => {
+    if (!e.data.type || e.data.type !== 'oauth-callback-payload') {
+      return;
+    }
+    if (!e.data.success) {
+      this.toast.showError('Did not receive any code');
+      this.popupWindow?.removeEventListener('message', this.windowMessageListener);
+      this.popupWindow = null;
+      return;
+    }
+    const list: TikTokAccount[] = this.settingsForm.controls.tikTokAccounts.value;
+    list.push({
+      code: e.data.code!,
+      username: 'unknown',
+      email: 'unknown'
+    });
+    this.settingsForm.controls.tikTokAccounts.setValue(list);
+    this.panelOpenState = true;
+    this.toast.showSuccess('TikTok login successful');
+    this.popupWindow?.removeEventListener('message', this.windowMessageListener);
+    this.popupWindow = null;
+  };
+
   redirectToTikTok() {
     const csrfState = Math.random().toString(36).substring(2);
     let url = 'https://open-api.tiktok.com/platform/oauth/connect/';
-
     url += '?client_key=' + environment.ttclientkey;
     url += '&scope=user.info.basic,video.upload';
     url += '&response_type=code';
-    url += '&redirect_uri=' + encodeURIComponent(window.location.origin + '/api/tiktok/callback');
+    url += '&redirect_uri=' + encodeURIComponent(window.location.origin + '/oauth/tiktok/callback');
     url += '&state=' + csrfState;
-    window.open(url, '_blank');
+
+    this.popupWindow = window.open(url, '_blank');
+    this.popupWindow!.addEventListener('message', this.windowMessageListener);
   }
 }
