@@ -13,8 +13,8 @@ export class TiktokService {
     return this.http.get<TikTokAccount[]>(`/api/tiktok/getAccounts`);
   }
 
-  deleteAccount(authCode: string) {
-    return this.http.delete(`/api/tiktok/deleteAccount/${encodeURIComponent(authCode)}`);
+  deleteAccount(accountId: string) {
+    return this.http.delete(`/api/tiktok/deleteAccount/${encodeURIComponent(accountId)}`);
   }
 
   addAccount(payload: TikTokAccount) {

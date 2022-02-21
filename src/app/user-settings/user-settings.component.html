@@ -24,10 +24,10 @@
               <mat-card>{{t.email}}</mat-card>
             </div>
             <div class="col-12 col-sm-3 mb-2">
-              <mat-card>{{t.authCode | slice:0:10}}</mat-card>
+              <mat-card>{{t.accountId}}</mat-card>
             </div>
             <div class="col-12 col-sm-3 d-flex justify-content-end">
-              <button (click)="deleteTikTokAccount(t.authCode, poz)" mat-mini-fab color="accent">
+              <button (click)="deleteTikTokAccount(t.accountId!, poz)" mat-mini-fab color="accent">
                 <mat-icon>delete</mat-icon>
               </button>
             </div>

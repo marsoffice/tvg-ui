@@ -46,8 +46,8 @@ export class UserSettingsComponent implements OnInit {
       }
     });
   }
-  deleteTikTokAccount(authCode: string, poz: number) {
-    this.tiktokService.deleteAccount(authCode).subscribe({
+  deleteTikTokAccount(accountId: string, poz: number) {
+    this.tiktokService.deleteAccount(accountId).subscribe({
       next: () => {
         this.toast.showSuccess('Account deleted');
         this.tikTokAccounts?.splice(poz, 1);
