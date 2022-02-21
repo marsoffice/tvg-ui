@@ -31,6 +31,11 @@ const routes: Routes = [
     canActivate: [MsalGuard]
   },
   {
+    path: 'api/tiktok/callback',
+    component: OauthCallbackComponent,
+    canActivate: [MsalGuard]
+  },
+  {
     path: 'user-settings',
     component: UserSettingsComponent,
     canActivate: [MsalGuard],

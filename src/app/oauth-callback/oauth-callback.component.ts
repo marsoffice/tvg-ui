@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { OauthCallbackPayload } from '../models/oauth-callback-payload';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TiktokService } from '../services/tiktok.service';
+import { ToastService } from '../shared/toast/services/toast.service';
 
 @Component({
   selector: 'app-oauth-callback',
@@ -9,25 +10,26 @@ import { OauthCallbackPayload } from '../models/oauth-callback-payload';
 })
 export class OauthCallbackComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private tikTokService: TiktokService, private router: Router, private toast: ToastService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(qp => {
       if (!qp.code) {
-        window.postMessage({
-          success: false,
-          error: 'No code received',
-          type: 'oauth-callback-payload'
-        } as OauthCallbackPayload);
-        window.close();
+        this.toast.showError('No code received');
         return;
       }
-      window.postMessage({
-        success: true,
-        code: qp.code,
-        type: 'oauth-callback-payload'
-      } as OauthCallbackPayload);
-      window.close();
+
+      this.tikTokService.addAccount({
+        authCode: qp.code
+      }).subscribe({
+        next: () => {
+          this.toast.showSuccess('TikTok account added successfully');
+          this.router.navigate([`user-settings`]);
+        },
+        error: e => {
+          this.toast.fromError(e);
+        }
+      });
     });
   }
 

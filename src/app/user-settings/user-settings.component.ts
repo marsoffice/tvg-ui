@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { environment } from 'src/environments/environment';
-import { OauthCallbackPayload } from '../models/oauth-callback-payload';
 import { TikTokAccount } from '../models/tiktok-account';
 import { TiktokService } from '../services/tiktok.service';
 import { UserSettingsService } from '../services/user-settings.service';
@@ -14,7 +13,6 @@ import { ToastService } from '../shared/toast/services/toast.service';
 })
 export class UserSettingsComponent implements OnInit {
   panelOpenState = false;
-  popupWindow: Window | null = null;
 
   settingsForm = new FormGroup({
     disableEmailNotifications: new FormControl(false)
@@ -58,42 +56,14 @@ export class UserSettingsComponent implements OnInit {
     });
   }
 
-
-  windowMessageListener = (e: MessageEvent<OauthCallbackPayload>) => {
-    if (!e.data.type || e.data.type !== 'oauth-callback-payload') {
-      return;
-    }
-    this.popupWindow?.removeEventListener('message', this.windowMessageListener);
-    this.popupWindow = null;
-
-    if (!e.data.success) {
-      this.toast.showError('Did not receive any code');
-      return;
-    }
-    this.tiktokService.addAccount({
-      authCode: e.data.code!
-    }).subscribe({
-      next: a => {
-        this.tikTokAccounts?.push(a);
-        this.toast.showSuccess('TikTok login successful');
-      },
-      error: e => {
-        this.toast.fromError(e);
-      }
-    });
-
-  };
-
   redirectToTikTok() {
     const csrfState = Math.random().toString(36).substring(2);
     let url = 'https://open-api.tiktok.com/platform/oauth/connect/';
     url += '?client_key=' + environment.ttclientkey;
     url += '&scope=user.info.basic,video.upload';
     url += '&response_type=code';
-    url += '&redirect_uri=' + encodeURIComponent(window.location.origin + '/oauth/tiktok/callback');
+    url += '&redirect_uri=' + encodeURIComponent(window.location.origin + '/api/tiktok/callback');
     url += '&state=' + csrfState;
-
-    this.popupWindow = window.open(url, '_blank');
-    this.popupWindow!.addEventListener('message', this.windowMessageListener);
+    location.href = url;
   }
 }

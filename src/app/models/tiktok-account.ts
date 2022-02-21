@@ -1,7 +1,8 @@
 export interface TikTokAccount {
   username?: string;
   accountId?: string;
-  email?: string;
+  name?: string;
+  avatarUrl?: string;
   authCode: string;
   userId?: string;
 }
