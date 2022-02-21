@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { OauthCallbackPayload } from '../models/oauth-callback-payload';
-import { TikTokAccount } from '../models/tik-tok-account';
 import { UserSettingsService } from '../services/user-settings.service';
 import { ToastService } from '../shared/toast/services/toast.service';
 
@@ -16,7 +15,6 @@ export class UserSettingsComponent implements OnInit {
   popupWindow: Window | null = null;
 
   settingsForm = new FormGroup({
-    tikTokAccounts: new FormControl([]),
     disableEmailNotifications: new FormControl(false)
   });
 
@@ -58,14 +56,7 @@ export class UserSettingsComponent implements OnInit {
       this.popupWindow = null;
       return;
     }
-    const list: TikTokAccount[] = this.settingsForm.controls.tikTokAccounts.value;
-    list.push({
-      code: e.data.code!,
-      username: 'unknown',
-      email: 'unknown'
-    });
-    this.settingsForm.controls.tikTokAccounts.setValue(list);
-    this.panelOpenState = true;
+    // TODO
     this.toast.showSuccess('TikTok login successful');
     this.popupWindow?.removeEventListener('message', this.windowMessageListener);
     this.popupWindow = null;

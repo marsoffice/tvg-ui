@@ -7,7 +7,7 @@
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
-  
+
       <mat-step>
         <ng-template matStepLabel>Post Description</ng-template>
         <ng-template matStepContent>
@@ -20,7 +20,7 @@
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
-  
+
       <mat-step>
         <ng-template matStepLabel>Editor Video Resolution</ng-template>
         <ng-template matStepContent>
@@ -35,7 +35,7 @@
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
-  
+
       <mat-step>
         <ng-template matStepLabel>Auto Upload TikTok Accounts</ng-template>
         <ng-template matStepContent>
@@ -43,7 +43,7 @@
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Auto Upload TikTok Accounts</mat-label>
             <mat-select formControlName="autoUploadTikTokAccounts" multiple>
-              <mat-option *ngFor="let account of autoUploadTikTokAccounts" [value]="account.username">{{account.username}}</mat-option>
+              <!-- <mat-option *ngFor="let account of autoUploadTikTokAccounts" [value]="account.username">{{account.username}}</mat-option> -->
             </mat-select>
           </mat-form-field>
           <button mat-button (click)="stepper.reset()">Reset</button>
