@@ -1,1 +1,2 @@
-<h2>Please wait...</h2>
+<h2 *ngIf="isLoading">Please wait...</h2>
+<h2 *ngIf="!isLoading && error">An error occurred</h2>
