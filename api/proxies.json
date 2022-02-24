@@ -110,16 +110,6 @@
       "requestOverrides": {
         "backend.request.headers.Authorization": "{request.headers.x-authorization}"
       }
-    },
-    "uploader": {
-      "debug": false,
-      "matchCondition": {
-        "route": "/api/uploader/{*restOfPath}"
-      },
-      "backendUri": "%uploader_url%/api/uploader/{restOfPath}",
-      "requestOverrides": {
-        "backend.request.headers.Authorization": "{request.headers.x-authorization}"
-      }
     }
   }
 }

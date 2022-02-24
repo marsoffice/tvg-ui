@@ -47,11 +47,7 @@ module.exports = {
     {
       from: "/api/tiktok(.*)",
       to: "http://localhost:7010/api/tiktok$1",
-    },
-    {
-      from: "/api/uploader(.*)",
-      to: "http://localhost:7013/api/uploader$1",
-    },
+    }
   ],
   directory: "dist/tvg-ui",
   logFormat: "stats",

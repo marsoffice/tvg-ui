@@ -42,9 +42,5 @@ module.exports = {
   "/api/tiktok": {
     target: "http://localhost:7010",
     secure: false,
-  },
-  "/api/uploader": {
-    target: "http://localhost:7013",
-    secure: false,
-  },
+  }
 };
