@@ -1,5 +1,20 @@
 <form [formGroup]="job">
     <mat-stepper color="accent" orientation="vertical" #stepper>
+      <mat-step>
+        <ng-template matStepLabel>Selected Audio Background</ng-template>
+        <ng-template matStepContent>
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Selected Audio Background</mat-label>
+            <mat-select formControlName="selectedAudioBackground" disableRipple>
+              <mat-option [value]="null">-</mat-option>
+              <mat-option *ngFor="let bg of audioBackgrounds" [value]="bg">{{bg}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
+
         <mat-step>
           <ng-template matStepLabel>Audio Background Quality</ng-template>
           <ng-template matStepContent>
@@ -10,9 +25,9 @@
             <button mat-button matStepperNext>Next</button>
           </ng-template>
         </mat-step>
-    
-    
-    
+
+
+
         <mat-step>
           <ng-template matStepLabel>Audio Background Volume In Percent</ng-template>
           <ng-template matStepContent>
@@ -20,7 +35,7 @@
               <mat-label>Audio Background Volume In Percent</mat-label>
               <input type="number" formControlName="audioBackgroundVolumeInPercent" matInput placeholder="" value="" />
             </mat-form-field>
-            
+
             <button mat-button (click)="stepper.reset()">Reset</button>
             <button mat-button matStepperPrevious>Back</button>
           </ng-template>

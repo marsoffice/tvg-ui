@@ -29,6 +29,7 @@ export class AddEditJobComponent implements OnInit {
     contentTranslateFromLanguage: new FormControl(),
     contentTranslateToLanguage: new FormControl(),
     contentNoOfIncludedTopComments: new FormControl(),
+    selectedContent: new FormControl(),
     // 3. Speech
     speechPitch: new FormControl(),
     speechSpeed: new FormControl(),
@@ -39,8 +40,12 @@ export class AddEditJobComponent implements OnInit {
     // 4. Audio Background
     audioBackgroundQuality: new FormControl(),
     audioBackgroundVolumeInPercent: new FormControl(),
+    selectedAudioBackground: new FormControl(),
+
     // 5. Video Background
     videoBackgroundResolution: new FormControl(),
+    selectedVideoBackground: new FormControl(),
+
     // 6. Text Box
     textFontFamily: new FormControl(),
     textFontSize: new FormControl(),

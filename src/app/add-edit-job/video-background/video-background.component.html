@@ -1,5 +1,19 @@
 <form [formGroup]="job">
   <mat-stepper color="accent" orientation="vertical" #stepper>
+          <mat-step>
+            <ng-template matStepLabel>Selected Video Background</ng-template>
+            <ng-template matStepContent>
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label>Selected Video Background</mat-label>
+                <mat-select formControlName="selectedVideoBackground" disableRipple>
+                  <mat-option [value]="null">-</mat-option>
+                  <mat-option *ngFor="let bg of videoBackgrounds" [value]="bg">{{bg}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </ng-template>
+          </mat-step>
       <mat-step>
         <ng-template matStepLabel>Video Background Resolution</ng-template>
         <ng-template matStepContent>
