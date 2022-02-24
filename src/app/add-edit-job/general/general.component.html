@@ -56,7 +56,6 @@
           <ng-template matStepLabel>Cron</ng-template>
           <ng-template matStepContent>
             <app-cron [disabledRecurrenceTypes]="disabledRectTypes" formControlName="cron"></app-cron>
-            <mat-error *ngIf="job.get('cron')!.hasError('required')">Cron is required</mat-error>
             <button mat-button (click)="stepper.reset()">Reset</button>
             <button mat-button matStepperPrevious>Back</button>
           </ng-template>

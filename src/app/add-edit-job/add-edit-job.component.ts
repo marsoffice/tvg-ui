@@ -15,7 +15,7 @@ export class AddEditJobComponent implements OnInit {
     finalFileDurationInMillis: new FormControl(),
     trimGracefullyToMaxDuration: new FormControl(),
     disabled: new FormControl(),
-    cron: new FormControl('', [Validators.required]), // required
+    cron: new FormControl(),
     // 2. Content
     contentType: new FormControl(),
     contentTopic: new FormControl(),
