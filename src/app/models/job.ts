@@ -25,6 +25,7 @@ export interface Job {
   contentTranslateFromLanguage?: string; //select - contentLanguages - translate service
   contentTranslateToLanguage?: string; //select - contentLanguages translate service
   contentNoOfIncludedTopComments?: number;
+  selectedContent?: string;
 
 
   // 3. Speech
@@ -39,9 +40,11 @@ export interface Job {
   // 4. Audio Background
   audioBackgroundQuality?: number;
   audioBackgroundVolumeInPercent?: number;
+  selectedAudioBackground?: string;
 
   // 5. Video Background
   videoBackgroundResolution?: string; // string // select - allResolutions editor service
+  selectedVideoBackground?: string;
 
   // 6. Text Box
   textFontFamily?: string; // select - fontTypes editor service
