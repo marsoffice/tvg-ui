@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Job } from '../models/job';
+import { JobsList } from '../models/jobs-list';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,8 @@ export class JobsService {
 
   constructor(private http: HttpClient) { }
 
-  getJobs() {
-    return this.http.get<Job[]>(`/api/jobs/getJobs`);
+  getJobs(pageSize: number, nextRowKey?: string) {
+    return this.http.get<JobsList>(`/api/jobs/getJobs?pageSize=${pageSize}${nextRowKey ? ('&nextRowKey=' + nextRowKey) : ''}`);
   }
 
   getJob(id: string) {

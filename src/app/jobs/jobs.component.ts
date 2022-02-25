@@ -11,13 +11,14 @@ import { ToastService } from '../shared/toast/services/toast.service';
 })
 export class JobsComponent implements OnInit {
 
-  jobs: Job[] = []
+  jobs: Job[] = [];
+  pageSize = 50;
 
   constructor(private jobsService: JobsService, private toastService: ToastService, private router: Router) { }
 
   ngOnInit(): void {
-    this.jobsService.getJobs().subscribe(rez =>{
-      this.jobs = rez
+    this.jobsService.getJobs(this.pageSize).subscribe(rez =>{
+      this.jobs = rez.items
     })
   }
 
