@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Job } from '../models/job';
 import { JobsService } from '../services/jobs.service';
+import { ConfirmationService } from '../shared/confirmation/services/confirmation.service';
 import { ToastService } from '../shared/toast/services/toast.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class JobsComponent implements OnInit {
   pageSize = 50;
   nextRowKey: string | undefined;
 
-  constructor(private jobsService: JobsService, private toastService: ToastService, private router: Router) { }
+  constructor(private jobsService: JobsService, private toastService: ToastService, private router: Router, private confirmService: ConfirmationService) { }
 
   ngOnInit(): void {
     this.load();
@@ -29,9 +30,20 @@ export class JobsComponent implements OnInit {
   }
 
   deletejob(id:string | undefined, poz:number){
-   this.jobsService.deleteJob(id!).subscribe(rez =>{
-     this.jobs.splice(poz,1)
-   })
+    this.confirmService.confirm().subscribe(x => {
+      if (!x) {
+        return;
+      }
+      this.jobsService.deleteJob(id!).subscribe({
+        next: rez => {
+          this.jobs.splice(poz, 1);
+          this.toastService.showSuccess('Job deleted');
+        },
+        error: e => {
+          this.toastService.fromError(e);
+        }
+      });
+    });
 
   }
 
