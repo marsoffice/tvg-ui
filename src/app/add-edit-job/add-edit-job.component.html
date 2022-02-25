@@ -78,6 +78,7 @@
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
         <button [disabled]="job.invalid" color="accent" (click)="clickaddjob()" mat-raised-button matStepperNext>Save</button>
+        <button [disabled]="job.invalid" color="accent" (click)="clickaddrunjob()" mat-raised-button matStepperNext>Save and run now</button>
       </div>
     </ng-template>
   </mat-step>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map, switchMap } from 'rxjs';
 import { JobsService } from '../services/jobs.service';
 
 @Component({
@@ -100,6 +101,29 @@ export class AddEditJobComponent implements OnInit {
       })
     }
 
+  }
+
+  clickaddrunjob() {
+    if (this.job.value.autoUploadTikTokAccounts != null) {
+      this.job.value.autoUploadTikTokAccounts = this.job.value.autoUploadTikTokAccounts.join();
+    }
+    if (this.id == null) {
+      //add
+      this.jobsService.createJob(this.job.value).pipe(
+        switchMap(x => this.jobsService.startJob(x.id!).pipe(
+          map(z => x)
+        ))
+      ).subscribe(rez => {
+        this.router.navigateByUrl('/jobs/' + rez.id + '/videos');
+      });
+    } else {
+      //edit
+      this.jobsService.updateJob(this.id, this.job.value).pipe(
+        switchMap(x => this.jobsService.startJob(this.id!))
+      ).subscribe(rez => {
+        this.router.navigateByUrl('/jobs/' + this.id + '/videos');
+      });
+    }
   }
 
 
