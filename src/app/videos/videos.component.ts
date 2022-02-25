@@ -16,6 +16,7 @@ import { ToastService } from '../shared/toast/services/toast.service';
 export class VideosComponent implements OnInit, OnDestroy {
   jobId: string | undefined;
   videos: Video[] = [];
+  nextRowKey: string | undefined;
   pageSize = 50;
   private _destroy: Subscription[] = [];
   private signalrSub: SignalrObservableWrapper<Video> | undefined;
@@ -28,34 +29,38 @@ export class VideosComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route.params.subscribe(x => {
       this.jobId = x.id;
-      this.videosService.getJobVideos(this.jobId!, this.pageSize).subscribe({
-        next: v => {
-          this.videos = v.items;
-          this.sortVideos();
-          this.signalrSub = this.hubService.subscribe<Video>('videoUpdate');
-          this._destroy.push(this.signalrSub.observable.subscribe(vid => {
-            if (vid.jobId !== this.jobId) {
-              return;
-            }
-            let foundVid = this.videos?.find(x => x.id === vid.id && x.jobId === vid.jobId);
-            if (foundVid == null) {
-              foundVid = vid;
-              this.videos = [foundVid, ...this.videos];
-              return;
-            }
-
-            foundVid = Object.assign(foundVid, vid);
-            this.sortVideos();
-            this.videos = [...this.videos];
-          }));
-        },
-        error: e => {
-          this.toastService.fromError(e);
-        }
-      });
+      this.load();
     });
   }
 
+  load() {
+    this.videosService.getJobVideos(this.jobId!, this.pageSize, this.nextRowKey).subscribe({
+      next: v => {
+        this.videos = [...this.videos, ...v.items];
+        this.nextRowKey = v.nextRowKey;
+        this.sortVideos();
+        this.signalrSub = this.hubService.subscribe<Video>('videoUpdate');
+        this._destroy.push(this.signalrSub.observable.subscribe(vid => {
+          if (vid.jobId !== this.jobId) {
+            return;
+          }
+          let foundVid = this.videos?.find(x => x.id === vid.id && x.jobId === vid.jobId);
+          if (foundVid == null) {
+            foundVid = vid;
+            this.videos = [foundVid, ...this.videos];
+            return;
+          }
+
+          foundVid = Object.assign(foundVid, vid);
+          this.sortVideos();
+          this.videos = [...this.videos];
+        }));
+      },
+      error: e => {
+        this.toastService.fromError(e);
+      }
+    });
+  }
   ngOnDestroy(): void {
     if (this.signalrSub) {
       this.signalrSub.kill();

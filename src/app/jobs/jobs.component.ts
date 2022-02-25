@@ -13,13 +13,19 @@ export class JobsComponent implements OnInit {
 
   jobs: Job[] = [];
   pageSize = 50;
+  nextRowKey: string | undefined;
 
   constructor(private jobsService: JobsService, private toastService: ToastService, private router: Router) { }
 
   ngOnInit(): void {
-    this.jobsService.getJobs(this.pageSize).subscribe(rez =>{
-      this.jobs = rez.items
-    })
+    this.load();
+  }
+
+  load() {
+    this.jobsService.getJobs(this.pageSize, this.nextRowKey).subscribe(rez => {
+      this.jobs = [...this.jobs, ...rez.items];
+      this.nextRowKey = rez.nextRowKey;
+    });
   }
 
   deletejob(id:string | undefined, poz:number){
