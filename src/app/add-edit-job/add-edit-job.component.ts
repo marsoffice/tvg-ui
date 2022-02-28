@@ -78,6 +78,9 @@ export class AddEditJobComponent implements OnInit {
           if (rez.autoUploadTikTokAccounts != null) {
             rez.autoUploadTikTokAccounts = (rez.autoUploadTikTokAccounts as any).split(',')
           }
+          if (rez.selectedContent != null) {
+            rez.selectedContent = JSON.parse(rez.selectedContent)
+          }
           this.job.patchValue(rez)
         })
       }
@@ -88,6 +91,9 @@ export class AddEditJobComponent implements OnInit {
   clickaddjob() {
     if (this.job.value.autoUploadTikTokAccounts != null) {
       this.job.value.autoUploadTikTokAccounts = this.job.value.autoUploadTikTokAccounts.join()
+    }
+    if (this.job.value.selectedContent != null) {
+      this.job.value.selectedContent = JSON.stringify(this.job.value.selectedContent);
     }
     if (this.id == null) {
       //add
@@ -106,6 +112,9 @@ export class AddEditJobComponent implements OnInit {
   clickaddrunjob() {
     if (this.job.value.autoUploadTikTokAccounts != null) {
       this.job.value.autoUploadTikTokAccounts = this.job.value.autoUploadTikTokAccounts.join();
+    }
+    if (this.job.value.selectedContent != null) {
+      this.job.value.selectedContent = JSON.stringify(this.job.value.selectedContent);
     }
     if (this.id == null) {
       //add

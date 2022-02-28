@@ -1,18 +1,34 @@
 <form [formGroup]="job">
   <mat-stepper color="accent" orientation="vertical" #stepper>
+    <mat-step>
+      <ng-template matStepLabel>Custom Content</ng-template>
+      <ng-template matStepContent>
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Custom Content</mat-label>
+          <mat-chip-list #chipList aria-label="Video keywords" multiple formControlName="selectedContent">
+            <mat-chip *ngFor="let sentence of job.get('selectedContent')!.value; let i = index" [selected]="sentence" [value]="sentence" (removed)="removeSentence(i)">
+              {{sentence}}
+            </mat-chip>
+            <input placeholder="New sentence..." [matChipInputFor]="chipList" (matChipInputTokenEnd)="addSentenceFromInput($event)">
+          </mat-chip-list>
+        </mat-form-field>
+        <button mat-button matStepperNext>Next</button>
+      </ng-template>
+    </mat-step>
       <mat-step>
         <ng-template matStepLabel>Content Type</ng-template>
         <ng-template matStepContent>
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Content Type</mat-label>
             <mat-select formControlName="contentType" disableRipple>
+              <mat-option [value]="null"> - </mat-option>
               <mat-option *ngFor="let type of contentTypes" [value]="type">{{type}}</mat-option>
             </mat-select>
           </mat-form-field>
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
-  
+
       <mat-step>
         <ng-template matStepLabel>Content Topic</ng-template>
         <ng-template matStepContent>
@@ -24,7 +40,7 @@
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
-  
+
       <mat-step>
         <ng-template matStepLabel>Content Get Latest Posts</ng-template>
         <ng-template matStepContent>
@@ -133,7 +149,7 @@
           <button mat-button matStepperNext>Next</button>
         </ng-template>
       </mat-step>
-  
+
       <mat-step>
         <ng-template matStepLabel>Content No Of Included Top Comments</ng-template>
         <ng-template matStepContent>
@@ -141,7 +157,7 @@
             <mat-label>Content No Of Included Top Comments</mat-label>
             <input type="number" formControlName="contentNoOfIncludedTopComments" matInput placeholder="" value="" />
           </mat-form-field>
-          
+
           <button mat-button (click)="stepper.reset()">Reset</button>
           <button mat-button matStepperPrevious>Back</button>
         </ng-template>

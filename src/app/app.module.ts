@@ -28,6 +28,7 @@ import { LoggedOutComponent } from './logged-out/logged-out.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -120,6 +121,7 @@ if (!environment.production) {
     FlexLayoutModule,
     CronModule,
 
+    MatChipsModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
