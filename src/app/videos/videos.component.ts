@@ -38,7 +38,6 @@ export class VideosComponent implements OnInit, OnDestroy {
       next: v => {
         this.videos = [...this.videos, ...v.items];
         this.nextRowKey = v.nextRowKey;
-        this.sortVideos();
         this.signalrSub = this.hubService.subscribe<Video>('videoUpdate');
         this._destroy.push(this.signalrSub.observable.subscribe(vid => {
           if (vid.jobId !== this.jobId) {
@@ -52,7 +51,6 @@ export class VideosComponent implements OnInit, OnDestroy {
           }
 
           foundVid = Object.assign(foundVid, vid);
-          this.sortVideos();
           this.videos = [...this.videos];
         }));
       },
@@ -99,28 +97,5 @@ export class VideosComponent implements OnInit, OnDestroy {
         }
       });
     });
-  }
-
-  private sortVideos() {
-    this.videos = this.videos.sort((a, b) => {
-      const dateA = a?.createdDate || a?.updatedDate;
-      const dateB = b?.createdDate || b?.updatedDate;
-      if (dateA == null && dateB == null) {
-        return 0;
-      }
-      if (dateA == null && dateB != null) {
-        return -1;
-      }
-      if (dateA != null && dateB == null) {
-        return 1;
-      }
-      if (dateA! < dateB!) {
-        return -1;
-      }
-      if (dateA! > dateB!) {
-        return 1;
-      }
-      return 0;
-    }).reverse();
   }
 }
